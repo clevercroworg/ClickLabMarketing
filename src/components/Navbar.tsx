@@ -72,7 +72,7 @@ export function Navbar() {
                     </div>
                   </div>
                   <span className="font-extrabold text-2xl tracking-tight text-gray-900">
-                    ClickLab<span className="text-blue-600">.</span>
+                    ClickLab
                   </span>
                 </a>
               </div>

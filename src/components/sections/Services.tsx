@@ -53,7 +53,7 @@ export function Services() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-gray-900 mb-6"
           >
-            Capabilities engineered for <br/> <span className="text-blue-600">exponential growth.</span>
+            Our <span className="text-blue-600">Services</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -62,7 +62,7 @@ export function Services() {
             transition={{ delay: 0.1 }}
             className="text-lg md:text-xl text-gray-500 font-medium"
           >
-            We don't offer generic templates. We build custom marketing infrastructures combining elite creative, rigorous data science, and lethal media buying.
+            Full-stack digital marketing solutions built for measurable growth and ROI.
           </motion.p>
         </div>
 

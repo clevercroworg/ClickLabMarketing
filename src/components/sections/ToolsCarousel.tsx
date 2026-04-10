@@ -33,9 +33,6 @@ export function ToolsCarousel() {
       <div className="container mx-auto px-4 z-10 mb-8 max-w-4xl text-center">
         <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 inline-block">Infrastructure</span>
         <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">The Tech We Master</h2>
-        <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto">
-          We don't rely on guesswork. We build, connect, and automate your revenue engine using the most powerful marketing infrastructure available in the ecosystem.
-        </p>
       </div>
 
       <div className="relative flex flex-col gap-4 overflow-hidden py-4">

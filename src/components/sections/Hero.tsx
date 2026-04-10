@@ -15,7 +15,7 @@ const BgIcon = ({ children, className }: { children: React.ReactNode; className?
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-[#080f1e] pt-32 pb-16 lg:pt-40 lg:pb-32 px-4 md:px-8">
+    <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-[#080f1e] pt-28 pb-12 lg:pt-40 lg:pb-32 px-4 md:px-8">
       
       {/* ========== FLOWING GRADIENT WAVES + ICONS BACKGROUND ========== */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -34,10 +34,11 @@ export function Hero() {
         <div className="hero-orb-2 absolute -bottom-[20%] -right-[10%] w-[65%] h-[65%] bg-cyan-500/15 rounded-full blur-[120px]" />
         <div className="hero-orb-3 absolute top-[15%] right-[5%] w-[40%] h-[40%] bg-indigo-600/12 rounded-full blur-[100px]" />
 
-        {/* Ripple rings */}
-        <div className="hero-ripple hero-ripple-1 w-[500px] h-[500px] md:w-[800px] md:h-[800px] border border-blue-400/10" />
-        <div className="hero-ripple hero-ripple-2 w-[500px] h-[500px] md:w-[800px] md:h-[800px] border border-cyan-400/8" />
-        <div className="hero-ripple hero-ripple-3 w-[500px] h-[500px] md:w-[800px] md:h-[800px] border border-indigo-400/8" />
+        {/* Ripple rings — visible on mobile */}
+        <div className="hero-ripple hero-ripple-1 w-[350px] h-[350px] md:w-[800px] md:h-[800px] border-2 md:border border-blue-400/20 md:border-blue-400/10" />
+        <div className="hero-ripple hero-ripple-2 w-[350px] h-[350px] md:w-[800px] md:h-[800px] border-2 md:border border-cyan-400/15 md:border-cyan-400/8" />
+        <div className="hero-ripple hero-ripple-3 w-[350px] h-[350px] md:w-[800px] md:h-[800px] border-2 md:border border-indigo-400/15 md:border-indigo-400/8" />
+        <div className="hero-ripple hero-ripple-4 w-[350px] h-[350px] md:w-[800px] md:h-[800px] border md:border border-blue-300/10" />
 
         {/* Dot grid */}
         <div className="absolute inset-0 opacity-[0.03]" 
@@ -46,22 +47,22 @@ export function Hero() {
 
         {/* ===== Floating App Icons embedded in the flow ===== */}
         {/* LinkedIn */}
-        <BgIcon className="left-[8%] top-[18%]" >
+        <BgIcon className="hidden md:flex left-[8%] top-[18%]" >
           <svg viewBox="0 0 24 24" className="w-7 h-7 fill-[#0a66c2]/60"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.603 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </BgIcon>
 
         {/* Instagram */}
-        <BgIcon className="right-[10%] top-[22%]" >
+        <BgIcon className="hidden md:flex right-[10%] top-[22%]" >
           <svg viewBox="0 0 24 24" className="w-7 h-7 stroke-[#E1306C]/50 fill-none" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </BgIcon>
 
         {/* Facebook */}
-        <BgIcon className="left-[15%] bottom-[25%]" >
+        <BgIcon className="hidden md:flex left-[15%] bottom-[25%]" >
           <svg viewBox="0 0 24 24" className="w-7 h-7 fill-[#1877F2]/50"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </BgIcon>
 
         {/* Google Analytics */}
-        <BgIcon className="right-[12%] bottom-[20%]" >
+        <BgIcon className="hidden md:flex right-[12%] bottom-[20%]" >
           <svg viewBox="0 0 24 24" className="w-7 h-7 fill-[#F9AB00]/50"><path d="M12 22h10V2H2v20h10zm-8-2V4h16v16H4zm6-12h-2v10h2V8zm4 4h-2v6h2v-6zm4-7h-2v13h2V5z"/></svg>
         </BgIcon>
 
@@ -102,13 +103,13 @@ export function Hero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-[2.75rem] sm:text-6xl lg:text-[5.5rem] font-black text-white tracking-tighter leading-[1.05] mb-8"
+          className="text-4xl sm:text-5xl lg:text-[4.5rem] font-black text-white tracking-tighter leading-[1.08] mb-8"
         >
-          Scale Your Revenue <br className="hidden md:block" />
-          With{" "}
+          Your Growth Partner <br className="hidden md:block" />
+          For{" "}
           <span className="relative inline-block">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300">
-              Precision.
+              Digital Success
             </span>
             <motion.span 
               initial={{ scaleX: 0 }}
@@ -126,7 +127,7 @@ export function Hero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-lg sm:text-xl lg:text-2xl text-slate-400 font-medium leading-relaxed mb-14 max-w-3xl mx-auto"
+          className="text-base sm:text-xl lg:text-2xl text-slate-400 font-medium leading-relaxed mb-8 sm:mb-14 max-w-3xl mx-auto px-2"
         >
           We design and execute data-driven marketing infrastructures{" "}
           <br className="hidden lg:block" />
@@ -141,10 +142,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center gap-5 justify-center w-full sm:w-auto"
         >
-          <Button size="lg" variant="default" className="relative group w-full sm:w-auto h-14 px-10 text-lg rounded-2xl shadow-xl shadow-blue-600/30 overflow-hidden active:scale-[0.97] transition-transform">
-            <div className="hero-light-streak absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent z-0" />
-            <span className="relative z-10">Book Strategy Session</span>
-            <ArrowRight className="ml-2 w-5 h-5 relative z-10" />
+          <Button size="lg" variant="default" className="btn-shimmer w-full sm:w-auto h-14 px-10 text-lg rounded-2xl shadow-xl shadow-blue-600/30 active:scale-[0.97] transition-transform">
+            Get Started
+            <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
           <Button size="lg" variant="outline" className="w-full sm:w-auto h-14 px-10 text-lg rounded-2xl border-2 border-white/15 bg-white/[0.05] text-white backdrop-blur-lg hover:border-transparent active:scale-[0.97] transition-all duration-200">
             View Case Studies
@@ -157,7 +157,7 @@ export function Hero() {
           whileInView={{ opacity: 0.5 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="mt-14 flex items-center justify-center gap-5 text-[10px] sm:text-xs font-black text-slate-500 uppercase tracking-[0.25em]"
+          className="mt-8 sm:mt-14 flex items-center justify-center gap-5 text-[10px] sm:text-xs font-black text-slate-500 uppercase tracking-[0.25em]"
         >
           <span>Data-Driven Strategy</span>
           <span className="w-1.5 h-1.5 rounded-full bg-slate-600"></span>

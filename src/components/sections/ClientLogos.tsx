@@ -20,8 +20,8 @@ export function ClientLogos() {
   return (
     <section className="py-12 bg-white relative overflow-hidden border-b border-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-xs font-bold text-gray-400 tracking-[0.2em] uppercase mb-10">
-          Trusted by ambitious brands worldwide
+        <p className="text-center text-sm font-bold text-gray-400 tracking-[0.2em] uppercase mb-10">
+          Our Clients
         </p>
         
         {/* Carousel Container */}

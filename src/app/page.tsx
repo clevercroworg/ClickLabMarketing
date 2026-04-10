@@ -2,9 +2,9 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { ClientLogos } from "@/components/sections/ClientLogos";
 import { Services } from "@/components/sections/Services";
+import { ToolsCarousel } from "@/components/sections/ToolsCarousel";
 import { Process } from "@/components/sections/Process";
 import { Philosophy } from "@/components/sections/Philosophy";
-import { ToolsCarousel } from "@/components/sections/ToolsCarousel";
 import { Expertise } from "@/components/sections/Expertise";
 import { TestimonialsCarousel } from "@/components/sections/TestimonialsCarousel";
 import { CTA } from "@/components/sections/CTA";
@@ -18,9 +18,9 @@ export default function Home() {
       <Hero />
       <ClientLogos />
       <Services />
+      <ToolsCarousel />
       <Process />
       <Philosophy />
-      <ToolsCarousel />
       <Expertise />
       <TestimonialsCarousel options={{ loop: true, align: "start" }} />
       <CTA />
