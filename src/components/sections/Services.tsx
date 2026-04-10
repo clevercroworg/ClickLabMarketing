@@ -1,19 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Megaphone, Search, BarChart3, LayoutTemplate, MousePointerClick, Mail, ArrowRight } from "lucide-react";
+import { Megaphone, Search, Target, Layout, MousePointer2, Share2, Mail, ArrowRight } from "lucide-react";
 
 const services = [
   {
     title: "Google Ads",
     description: "High-intent search campaigns and display strategies that capture ready-to-buy customers at the perfect moment.",
-    icon: Search,
+    icon: MousePointer2,
     color: "from-blue-600 to-blue-400",
   },
   {
     title: "Meta Ads",
     description: "Leveraging precision targeting on Facebook and Instagram to scale your brand through visually stunning, high-converting creative.",
-    icon: MousePointerClick,
+    icon: Share2,
     color: "from-cyan-600 to-cyan-400",
   },
   {
@@ -25,13 +25,13 @@ const services = [
   {
     title: "Website Development",
     description: "High-performance, conversion-optimized websites built with cutting-edge technology and premium aesthetics.",
-    icon: LayoutTemplate,
+    icon: Layout,
     color: "from-sky-600 to-sky-400",
   },
   {
     title: "SEO",
     description: "Long-term organic growth strategies that dominate search rankings and build sustainable brand authority.",
-    icon: BarChart3,
+    icon: Target,
     color: "from-blue-700 to-indigo-500",
   },
   {
