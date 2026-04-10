@@ -116,7 +116,7 @@ export function Hero() {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="absolute -bottom-1.5 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500/40 to-cyan-400/40 rounded-full origin-left"
+              className="absolute -bottom-1.5 left-0 w-full h-1 bg-gradient-to-r from-blue-500/40 to-cyan-400/40 rounded-full origin-left"
             />
           </span>
         </motion.h1>

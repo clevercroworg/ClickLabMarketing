@@ -1,42 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Megaphone, Search, PenTool, LayoutTemplate, MousePointerClick, Mail, ArrowRight } from "lucide-react";
+import { Megaphone, Search, BarChart3, LayoutTemplate, MousePointerClick, Mail, ArrowRight } from "lucide-react";
 
 const services = [
   {
-    title: "Organic Dominance",
-    description: "Enterprise-level SEO architecture and content strategies that build insurmountable moats in search results.",
+    title: "Google Ads",
+    description: "High-intent search campaigns and display strategies that capture ready-to-buy customers at the perfect moment.",
     icon: Search,
     color: "from-blue-600 to-blue-400",
   },
   {
-    title: "Paid Acquisition",
-    description: "Multi-channel media buying across Meta, Google, and TikTok. We engineer math that makes scaling inevitable.",
+    title: "Meta Ads",
+    description: "Leveraging precision targeting on Facebook and Instagram to scale your brand through visually stunning, high-converting creative.",
     icon: MousePointerClick,
     color: "from-cyan-600 to-cyan-400",
   },
   {
-    title: "Brand & Social",
-    description: "Data-informed creative that stops thumbs and builds rabid communities across the social graph.",
+    title: "Social Media Management",
+    description: "End-to-end community building and content strategy that turns followers into loyal brand advocates.",
     icon: Megaphone,
     color: "from-indigo-600 to-indigo-400",
   },
   {
-    title: "Premium Web UX",
-    description: "High-fidelity, lightning-fast digital storefronts optimized relentlessly for conversion and aesthetics.",
+    title: "Website Development",
+    description: "High-performance, conversion-optimized websites built with cutting-edge technology and premium aesthetics.",
     icon: LayoutTemplate,
     color: "from-sky-600 to-sky-400",
   },
   {
-    title: "Content Engineering",
-    description: "Authority-building content systems designed to educate, nurture, and ultimately convert sophisticated buyers.",
-    icon: PenTool,
+    title: "SEO",
+    description: "Long-term organic growth strategies that dominate search rankings and build sustainable brand authority.",
+    icon: BarChart3,
     color: "from-blue-700 to-indigo-500",
   },
   {
-    title: "Lifecycle Marketing",
-    description: "Advanced email and SMS infrastructures that turn one-time buyers into lifetime brand advocates.",
+    title: "Email Marketing",
+    description: "Advanced lifecycle automation and high-converting campaigns that maximize customer lifetime value.",
     icon: Mail,
     color: "from-blue-500 to-cyan-500",
   },
