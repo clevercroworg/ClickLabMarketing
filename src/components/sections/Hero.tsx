@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useRef } from "react";
@@ -39,7 +39,7 @@ const DataFluxLines = () => (
   </svg>
 );
 
-// Floating Glass Shard Component
+// Floating Glass Shard Component with Hardware Acceleration
 const GlassShard = ({ delay = 0, x = "0%", y = "0%", rotate = 0 }) => (
   <motion.div
     initial={{ opacity: 0, scale: 0 }}
@@ -55,8 +55,8 @@ const GlassShard = ({ delay = 0, x = "0%", y = "0%", rotate = 0 }) => (
       ease: "easeInOut",
       delay: delay 
     }}
+    style={{ willChange: "transform", translateZ: 0, left: x, top: y }}
     className="absolute pointer-events-none z-10"
-    style={{ left: x, top: y }}
   >
     <div className="w-24 h-24 sm:w-32 sm:h-32 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl rotate-12 shadow-2xl skew-x-12" />
   </motion.div>
@@ -66,9 +66,13 @@ export function Hero() {
   const containerRef = useRef(null);
   const { scrollY } = useScroll();
   
-  // Parallax effects for content
-  const textY = useTransform(scrollY, [0, 500], [0, 100]);
-  const bgY = useTransform(scrollY, [0, 500], [0, -150]);
+  // RAW transformations
+  const rawTextY = useTransform(scrollY, [0, 500], [0, 120]);
+  const rawBgY = useTransform(scrollY, [0, 500], [0, -180]);
+
+  // SMOTHED transformations using useSpring to eliminate scroll jitter/flicker
+  const textY = useSpring(rawTextY, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  const bgY = useSpring(rawBgY, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   return (
     <section 
@@ -78,21 +82,21 @@ export function Hero() {
       
       {/* 1. LAYER: MESH GRADIENT (THE MAGIC BACKGROUND) */}
       <motion.div 
-        style={{ y: bgY }}
+        style={{ y: bgY, willChange: "transform", translateZ: 0 }}
         className="absolute inset-0 pointer-events-none z-0"
       >
         <motion.div 
-          animate={{ x: [0, 100, -50, 0], y: [0, -100, 50, 0] }}
+          animate={{ x: [0, 80, -40, 0], y: [0, -80, 40, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
           className="absolute -top-1/4 -left-1/4 w-[80%] h-[80%] bg-blue-600/20 rounded-full blur-[160px]"
         />
         <motion.div 
-          animate={{ x: [0, -150, 100, 0], y: [0, 120, -80, 0] }}
+          animate={{ x: [0, -120, 80, 0], y: [0, 100, -60, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="absolute -bottom-1/4 -right-1/4 w-[90%] h-[90%] bg-cyan-400/20 rounded-full blur-[180px]"
         />
         <motion.div 
-          animate={{ x: [0, 80, -120, 0], y: [0, 60, 100, 0] }}
+          animate={{ x: [0, 60, -100, 0], y: [0, 40, 80, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
           className="absolute top-1/4 right-1/4 w-[50%] h-[50%] bg-indigo-500/15 rounded-full blur-[140px]"
         />
@@ -117,9 +121,10 @@ export function Hero() {
       <div className="container mx-auto max-w-6xl relative z-20 flex flex-col items-center text-center">
         
         <motion.div
-           style={{ y: textY }}
+           style={{ y: textY, willChange: "transform" }}
            className="flex flex-col items-center"
         >
+          {/* Animated Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -130,11 +135,12 @@ export function Hero() {
             </span>
           </motion.div>
 
+          {/* Heading - Scaled Down for better balance */}
           <motion.h1 
             initial={{ opacity: 0, filter: "blur(20px)", y: 40 }}
             animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="text-6xl sm:text-7xl lg:text-9xl font-black text-slate-900 tracking-tighter leading-[0.95] mb-10"
+            className="text-5xl sm:text-7xl lg:text-[7.25rem] font-black text-slate-900 tracking-tighter leading-[0.98] mb-10"
           >
             Scale Your Revenue <br className="hidden md:block" />
             With <span className="relative inline-block">
@@ -148,6 +154,7 @@ export function Hero() {
             </span>
           </motion.h1>
 
+          {/* Subheading - STRICTLY 2 LINES on desktop */}
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -158,26 +165,28 @@ export function Hero() {
             that turn clicks into measurable enterprise growth.
           </motion.p>
           
+          {/* Action Buttons - Scaled Down for better balance */}
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row items-center gap-6 justify-center w-full max-w-md md:max-w-none"
           >
-            <Button size="lg" variant="default" className="relative group w-full sm:w-auto h-20 px-14 text-2xl rounded-[2rem] shadow-2xl shadow-blue-600/30 overflow-hidden active:scale-95 transition-transform">
+            <Button size="lg" variant="default" className="relative group w-full sm:w-auto h-16 px-10 text-xl rounded-2xl shadow-2xl shadow-blue-600/30 overflow-hidden active:scale-95 transition-transform">
               <motion.div 
                 animate={{ x: ["-100%", "200%"] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 z-0"
               />
               <span className="relative z-10">Book Strategy Session</span>
-              <ArrowRight className="ml-3 w-7 h-7 relative z-10" />
+              <ArrowRight className="ml-3 w-6 h-6 relative z-10" />
             </Button>
-            <Button size="lg" variant="outline" className="w-full sm:w-auto h-20 px-14 text-2xl rounded-[2rem] border-2 border-slate-200 bg-white/50 backdrop-blur-xl hover:bg-white active:scale-95 transition-transform">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto h-16 px-10 text-xl rounded-2xl border-2 border-slate-200 bg-white/50 backdrop-blur-xl hover:bg-white active:scale-95 transition-transform">
               View Case Studies
             </Button>
           </motion.div>
           
+          {/* Trust Label */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.4 }}
