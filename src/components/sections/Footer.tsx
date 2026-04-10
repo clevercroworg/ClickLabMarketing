@@ -75,15 +75,6 @@ export function Footer() {
                   <a href="mailto:hello@clicklabmarketing.com" className="text-white hover:text-cyan-400 transition-colors text-lg font-semibold">hello@clicklabmarketing.com</a>
                 </div>
               </li>
-              <li className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-blue-600/20 flex items-center justify-center flex-shrink-0 text-blue-400 mt-1">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="block text-gray-500 text-sm mb-1 uppercase tracking-wider">Global HQ</span>
-                  <span className="text-white text-lg font-semibold block">123 Innovation Drive, NY 10001</span>
-                </div>
-              </li>
             </ul>
             <Button className="w-full mt-8 bg-white text-gray-900 hover:bg-gray-100 font-bold h-14 rounded-xl">
               Schedule Consultation

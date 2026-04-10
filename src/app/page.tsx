@@ -9,6 +9,7 @@ import { Expertise } from "@/components/sections/Expertise";
 import { TestimonialsCarousel } from "@/components/sections/TestimonialsCarousel";
 import { CTA } from "@/components/sections/CTA";
 import { Footer } from "@/components/sections/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <TestimonialsCarousel options={{ loop: true, align: "start" }} />
       <CTA />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 }

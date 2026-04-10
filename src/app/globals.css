@@ -104,4 +104,103 @@ body {
   .animate-marquee-reverse {
     animation: marquee-reverse 30s linear infinite;
   }
+
+  /* Hero Aurora Orbs - Pure CSS for zero jank */
+  @keyframes auroraOrb1 {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(80px, -60px) scale(1.15); }
+    66%  { transform: translate(-40px, 40px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  @keyframes auroraOrb2 {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(-100px, 80px) scale(0.85); }
+    66%  { transform: translate(60px, -50px) scale(1.2); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  @keyframes auroraOrb3 {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(50px, 30px) scale(1.1); }
+    66%  { transform: translate(-80px, 60px) scale(0.95); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  @keyframes auroraOrb4 {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(-60px, -40px) scale(1.05); }
+    66%  { transform: translate(70px, 50px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  @keyframes glassFloat {
+    0%   { transform: translateY(0) rotate(12deg) skewX(12deg); }
+    50%  { transform: translateY(-20px) rotate(16deg) skewX(12deg); }
+    100% { transform: translateY(0) rotate(12deg) skewX(12deg); }
+  }
+  @keyframes lightStreak {
+    0%   { transform: translateX(-100%) skewX(-12deg); }
+    100% { transform: translateX(300%) skewX(-12deg); }
+  }
+  .hero-orb-1 { animation: auroraOrb1 18s ease-in-out infinite; will-change: transform; }
+  .hero-orb-2 { animation: auroraOrb2 22s ease-in-out infinite; will-change: transform; }
+  .hero-orb-3 { animation: auroraOrb3 20s ease-in-out infinite; will-change: transform; }
+  .hero-orb-4 { animation: auroraOrb4 25s ease-in-out infinite; will-change: transform; }
+  .hero-glass-float { animation: glassFloat 6s ease-in-out infinite; will-change: transform; }
+  .hero-light-streak { animation: lightStreak 3.5s ease-in-out infinite 1s; }
+
+  /* Aurora Ripple Effect */
+  @keyframes auroraRipple {
+    0%   { transform: translate(-50%, -50%) scale(0.4); opacity: 0.5; }
+    50%  { opacity: 0.15; }
+    100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+  }
+  .hero-ripple {
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform, opacity;
+  }
+  .hero-ripple-1 { animation: auroraRipple 8s ease-out infinite; }
+  .hero-ripple-2 { animation: auroraRipple 8s ease-out infinite 2s; }
+  .hero-ripple-3 { animation: auroraRipple 8s ease-out infinite 4s; }
+  .hero-ripple-4 { animation: auroraRipple 8s ease-out infinite 6s; }
+
+  /* Flowing Gradient Wave */
+  @keyframes heroWaveFlow {
+    0%   { transform: translateX(0) scaleY(1); }
+    50%  { transform: translateX(-25%) scaleY(1.08); }
+    100% { transform: translateX(0) scaleY(1); }
+  }
+  .hero-wave {
+    animation: heroWaveFlow 12s ease-in-out infinite;
+    will-change: transform;
+  }
+  .hero-wave-2 {
+    animation: heroWaveFlow 16s ease-in-out infinite reverse;
+    will-change: transform;
+  }
+
+  /* Floating Icon Drift for hero background */
+  @keyframes iconDrift {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 0.12; }
+    25%  { opacity: 0.2; }
+    50%  { transform: translateY(-30px) rotate(8deg); opacity: 0.12; }
+    75%  { opacity: 0.18; }
+    100% { transform: translateY(0) rotate(0deg); opacity: 0.12; }
+  }
+  .hero-icon-float {
+    animation: iconDrift 8s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  /* WhatsApp Pulse */
+  @keyframes whatsappPulse {
+    0%   { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+    70%  { transform: scale(1); box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+  }
+  @keyframes whatsappRipple {
+    0%   { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
 }

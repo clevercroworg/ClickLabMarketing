@@ -50,8 +50,6 @@ export function Navbar() {
         >
           <div className="container mx-auto px-4 py-2 flex justify-between items-center text-xs font-semibold tracking-wide">
             <div className="flex items-center gap-4">
-               <span className="flex items-center gap-1"><Globe className="w-3 h-3" /> NY, Global HQ</span>
-               <span className="hidden sm:inline text-white/50">|</span>
                <span className="hidden sm:inline text-blue-100">Scale your revenue with ClickLab.</span>
             </div>
             <div className="flex items-center gap-4">
