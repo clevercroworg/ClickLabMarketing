@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+:root {
+  /* Pristine White Background */
+  --background: #ffffff;
+  --foreground: #020617; /* Slate 950 */
+  
+  /* Rich Blues & Gradients */
+  --primary: #1d4ed8; /* Blue 700 */
+  --primary-foreground: #ffffff;
+  
+  --secondary: #f1f5f9; /* Slate 100 */
+  --secondary-foreground: #0f172a;
+  
+  --accent: #0284c7; /* Light Blue/Cyan mix */
+  --accent-foreground: #ffffff;
+  
+  --muted: #f8fafc; /* Slate 50 */
+  --muted-foreground: #64748b; /* Slate 500 */
+  
+  --border: #e2e8f0;
+  --radius: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #020617; 
+    --foreground: #f8fafc;
+    
+    --primary: #3b82f6; 
+    --primary-foreground: #ffffff;
+    
+    --secondary: #1e293b; 
+    --secondary-foreground: #f8fafc;
+    
+    --accent: #38bdf8; 
+    --accent-foreground: #020617;
+    
+    --muted: #0f172a; 
+    --muted-foreground: #94a3b8; 
+    
+    --border: #1e293b;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --radius: var(--radius);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#1d4ed8] to-[#0ea5e9];
+  }
+  .bg-gradient-primary {
+    @apply bg-gradient-to-br from-[#1e3a8a] via-[#1d4ed8] to-[#0ea5e9];
+  }
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white shadow-2xl;
+  }
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+  
+  /* Marquee Animations */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes marquee-reverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+  .animate-marquee-reverse {
+    animation: marquee-reverse 30s linear infinite;
+  }
+}
