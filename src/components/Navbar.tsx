@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Globe } from "lucide-react";
+import { Menu, X, ArrowRight, Globe, MousePointer2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export function Navbar() {
@@ -67,12 +67,10 @@ export function Navbar() {
               
               {/* Left Logo */}
               <div className="flex-1 flex justify-start">
-                <a href="#" className="flex items-center gap-2 group">
-                  <div className="w-10 h-10 rounded-lg bg-blue-600 p-[1px] group-hover:scale-105 transition-transform">
-                    <div className="w-full h-full bg-slate-900 rounded-[7px] flex items-center justify-center">
-                      <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-cyan-300 font-black text-xl tracking-tighter">
-                        CL
-                      </span>
+                <a href="#" className="flex items-center gap-3 group">
+                  <div className="w-10 h-10 rounded-xl bg-blue-600 p-[1px] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.2)]">
+                    <div className="w-full h-full bg-slate-900 rounded-[11px] flex items-center justify-center">
+                      <MousePointer2 className="w-6 h-6 text-blue-400 fill-blue-400 group-hover:scale-110 transition-transform" />
                     </div>
                   </div>
                   <span className="font-extrabold text-2xl tracking-tight text-gray-900">

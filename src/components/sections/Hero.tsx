@@ -1,218 +1,197 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, BarChart3, LineChart, TrendingUp, Sparkles } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { useRef } from "react";
 
-// Custom raw SVG Icons replacing generic geometries for a realistic look
-const SVGIcons = {
-  LinkedIn: () => <svg viewBox="0 0 24 24" className="w-12 h-12 fill-[#0a66c2]"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.603 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>,
-  Insta: () => <svg viewBox="0 0 24 24" className="w-12 h-12 fill-none stroke-[#E1306C]"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" strokeWidth="2.5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" strokeWidth="2.5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" strokeWidth="2.5"/></svg>,
-  Facebook: () => <svg viewBox="0 0 24 24" className="w-12 h-12 fill-[#1877F2]"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>,
-  Analytics: () => <svg viewBox="0 0 24 24" className="w-12 h-12 fill-[#F9AB00]"><path d="M12 22h10V2H2v20h10zm-8-2V4h16v16H4zm6-12h-2v10h2V8zm4 4h-2v6h2v-6zm4-7h-2v13h2V5z"/></svg>
-};
+// Data Flux Lines Component for "Magic" Background
+const DataFluxLines = () => (
+  <svg className="absolute inset-0 w-full h-full opacity-20 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+    <motion.path
+      d="M-100 200 C 200 100, 400 300, 800 100 S 1200 400, 1600 200"
+      stroke="url(#grad1)"
+      strokeWidth="2"
+      fill="none"
+      initial={{ pathLength: 0, opacity: 0 }}
+      animate={{ pathLength: 1, opacity: 1 }}
+      transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+    />
+    <motion.path
+      d="M-100 400 C 300 300, 600 500, 900 350 S 1300 200, 1800 450"
+      stroke="url(#grad2)"
+      strokeWidth="1.5"
+      fill="none"
+      initial={{ pathLength: 0, opacity: 0 }}
+      animate={{ pathLength: 1, opacity: 1 }}
+      transition={{ duration: 7, repeat: Infinity, ease: "linear", delay: 1 }}
+    />
+    <defs>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#2563eb" />
+        <stop offset="100%" stopColor="#06b6d4" />
+      </linearGradient>
+      <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#818cf8" />
+        <stop offset="100%" stopColor="#22d3ee" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
 
-// Hanging creatively marketing apps logo bounding ONLY to right side wrapper.
-// Adjusted coordinates specifically to be safe for diverse viewport sizes.
-const floatingLogos = [
-  { id: 1, component: SVGIcons.LinkedIn, border:"border-[#0a66c2]/30", x: "-8%", y: "10%", delay: 0 }, 
-  { id: 2, component: SVGIcons.Insta, border:"border-[#E1306C]/30", x: "75%", y: "0%", delay: 1.5 }, 
-  { id: 3, component: SVGIcons.Facebook, border:"border-[#1877F2]/30", x: "80%", y: "75%", delay: 0.8 }, 
-  { id: 4, component: SVGIcons.Analytics, border:"border-[#F9AB00]/30", x: "0%", y: "85%", delay: 2.2 }, 
-];
+// Floating Glass Shard Component
+const GlassShard = ({ delay = 0, x = "0%", y = "0%", rotate = 0 }) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0 }}
+    animate={{ 
+      opacity: [0, 1, 1, 0], 
+      scale: [0.8, 1, 1.1, 0.9],
+      y: [0, -40, 0],
+      rotate: [rotate, rotate + 10, rotate - 10, rotate]
+    }}
+    transition={{ 
+      duration: 10 + delay, 
+      repeat: Infinity, 
+      ease: "easeInOut",
+      delay: delay 
+    }}
+    className="absolute pointer-events-none z-10"
+    style={{ left: x, top: y }}
+  >
+    <div className="w-24 h-24 sm:w-32 sm:h-32 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl rotate-12 shadow-2xl skew-x-12" />
+  </motion.div>
+);
 
 export function Hero() {
+  const containerRef = useRef(null);
+  const { scrollY } = useScroll();
+  
+  // Parallax effects for content
+  const textY = useTransform(scrollY, [0, 500], [0, 100]);
+  const bgY = useTransform(scrollY, [0, 500], [0, -150]);
+
   return (
-    // Fixed Top Padding so it's flush below the navbar, and added relative overflow hidden for aurora
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-white pt-24 pb-8 lg:pt-32 lg:pb-24">
+    <section 
+      ref={containerRef}
+      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-slate-50 pt-32 pb-16 lg:pt-40 lg:pb-32 px-4 md:px-8"
+    >
       
-      {/* High-Intensity Vertical Aurora - REDESIGNED for maximum visibility and glass effect */}
-      <div className="absolute bottom-0 left-0 right-0 h-[220px] md:h-[320px] lg:h-[400px] overflow-hidden pointer-events-none z-0">
+      {/* 1. LAYER: MESH GRADIENT (THE MAGIC BACKGROUND) */}
+      <motion.div 
+        style={{ y: bgY }}
+        className="absolute inset-0 pointer-events-none z-0"
+      >
+        <motion.div 
+          animate={{ x: [0, 100, -50, 0], y: [0, -100, 50, 0] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-1/4 -left-1/4 w-[80%] h-[80%] bg-blue-600/20 rounded-full blur-[160px]"
+        />
+        <motion.div 
+          animate={{ x: [0, -150, 100, 0], y: [0, 120, -80, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute -bottom-1/4 -right-1/4 w-[90%] h-[90%] bg-cyan-400/20 rounded-full blur-[180px]"
+        />
+        <motion.div 
+          animate={{ x: [0, 80, -120, 0], y: [0, 60, 100, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/4 right-1/4 w-[50%] h-[50%] bg-indigo-500/15 rounded-full blur-[140px]"
+        />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-gradient-radial from-white/60 to-transparent blur-[120px] opacity-60" />
+      </motion.div>
+
+      {/* 2. LAYER: DATA FLUX LINES */}
+      <DataFluxLines />
+
+      {/* 3. LAYER: GRAIN & TEXTURE */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-10 mix-blend-overlay"
+           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
+      />
+
+      {/* 4. LAYER: GLASS SHARDS */}
+      <GlassShard x="10%" y="15%" delay={0} rotate={15} />
+      <GlassShard x="85%" y="65%" delay={2} rotate={-20} />
+      <GlassShard x="75%" y="10%" delay={4} rotate={45} />
+      <GlassShard x="5%" y="75%" delay={1} rotate={-10} />
+
+      {/* 5. LAYER: CONTENT */}
+      <div className="container mx-auto max-w-6xl relative z-20 flex flex-col items-center text-center">
         
-        {/* Layered Background Glows for rich coloration */}
-        <div className="absolute bottom-[-50px] left-1/2 -translate-x-1/2 w-full lg:w-[130%] h-[300px] bg-blue-600/20 blur-[100px]" />
-        <div className="absolute bottom-[-20px] left-1/4 w-[40%] h-[200px] bg-cyan-400/20 blur-[80px]" />
-        <div className="absolute bottom-[-20px] right-1/4 w-[40%] h-[200px] bg-indigo-500/20 blur-[80px]" />
-        
-        {/* Structural Vertical Glass Bars - 30 items for density */}
-        <div className="absolute bottom-0 left-0 right-0 flex items-end justify-center px-1 gap-1 md:gap-2">
-          {[...Array(30)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="w-3 md:w-6 lg:w-10 bg-gradient-to-t from-blue-700/80 via-blue-500/40 to-white/10 border-x border-white/40 backdrop-blur-xl rounded-t-3xl shadow-[0_0_20px_rgba(37,99,235,0.3)]"
-              initial={{ height: "10%" }}
-              animate={{ 
-                height: [
-                  `${(i % 5) * 15 + 20}%`, 
-                  `${(i % 3) * 25 + 35}%`, 
-                  `${(i % 5) * 15 + 20}%`
-                ],
-                opacity: [0.6, 0.9, 0.6]
-              }}
-              transition={{ 
-                duration: 3 + (i % 4), 
-                repeat: Infinity, 
-                ease: "easeInOut",
-                delay: i * 0.05
-              }}
-            />
-          ))}
-        </div>
-
-        {/* High-Intensity Glowing Highlight Base */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[80px] md:h-[120px] bg-gradient-to-t from-blue-600/40 to-transparent blur-md z-10" />
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full overflow-visible">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-8 items-center mt-8 lg:mt-0">
-          
-          {/* Text Content */}
-          <div className="max-w-2xl text-center lg:text-left mx-auto lg:mx-0 relative z-20">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-700 font-bold text-xs md:text-sm tracking-wide uppercase mb-6 border border-blue-100 shadow-sm">
-                <Sparkles className="w-4 h-4" /> Growth Marketing Agency
-              </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-gray-900 tracking-tighter leading-[1.1] mb-6">
-                Scale Your Revenue <br className="hidden sm:block" />
-                With <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Precision.</span>
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-500 font-medium leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-                We design and execute data-driven marketing infrastructures that turn clicks into measurable enterprise growth.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                <Button size="lg" variant="default" className="w-full sm:w-auto text-base">
-                  Book Strategy Session <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button size="lg" variant="outline" className="w-full sm:w-auto text-base">
-                  View Case Studies
-                </Button>
-              </div>
-              
-              <div className="mt-8 md:mt-10 hidden lg:flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-6 text-xs sm:text-sm font-bold text-gray-400 uppercase tracking-wider">
-                <span>Data-Driven</span>
-                <span className="hidden sm:block w-2 h-2 rounded-full bg-gray-300"></span>
-                <span>ROI Focused</span>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* 3D Dashboard Visuals Wrapper - Full width for mobile */}
+        <motion.div
+           style={{ y: textY }}
+           className="flex flex-col items-center"
+        >
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative h-[350px] sm:h-[500px] lg:h-[600px] flex items-center justify-center perspective-1000 w-full"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Hanging / Floating Logos - Glassmorphism, larger size, visible across all devices */}
-            {floatingLogos.map((logo) => (
-              <motion.div
-                 key={logo.id}
-                 initial={{ opacity: 0, scale: 0.5 }}
-                 animate={{ 
-                   opacity: 1, 
-                   scale: 1,
-                   y: [0, -15, 0],
-                   rotate: [0, 5, -5, 0]
-                 }}
-                 transition={{ 
-                   opacity: { duration: 1, delay: logo.delay },
-                   scale: { duration: 1, delay: logo.delay },
-                   y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: logo.delay },
-                   rotate: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: logo.delay }
-                 }}
-                 className="absolute z-10 pointer-events-none"
-                 style={{ left: logo.x, top: logo.y }}
-              >
-                <div className={`w-16 h-16 sm:w-24 sm:h-24 bg-white/70 rounded-[1.5rem] sm:rounded-[2rem] flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white/50 backdrop-blur-xl rotate-12 ${logo.border}`}>
-                  <logo.component />
-                </div>
-              </motion.div>
-            ))}
-
-            <motion.div 
-              className="relative w-full max-w-[85%] sm:max-w-md lg:max-w-lg transform-3d z-30 mx-auto"
-              animate={{ rotateY: [0, 5, -5, 0], rotateX: [0, -3, 3, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <div className="relative bg-white rounded-3xl p-4 sm:p-6 shadow-2xl border border-gray-100 backdrop-blur-xl">
-                <div className="flex justify-between items-center mb-4 sm:mb-6">
-                  <div>
-                    <p className="text-gray-400 font-bold text-[10px] sm:text-sm uppercase tracking-wider mb-1">Total Revenue</p>
-                    <h3 className="text-xl sm:text-3xl font-black text-gray-900">$2,845,900</h3>
-                  </div>
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500">
-                    <TrendingUp className="w-4 h-4 sm:w-6 sm:h-6" />
-                  </div>
-                </div>
-                
-                <div className="h-24 sm:h-40 flex items-end gap-1.5 sm:gap-3 pb-2 border-b border-gray-100">
-                  {[40, 65, 45, 80, 55, 90, 75, 100].map((height, i) => (
-                    <motion.div 
-                      key={i}
-                      initial={{ height: 0 }}
-                      animate={{ height: `${height}%` }}
-                      transition={{ duration: 1, delay: 0.5 + (i * 0.1) }}
-                      className="flex-1 bg-gradient-to-t from-blue-600 to-cyan-400 rounded-t-sm sm:rounded-t-lg opacity-90"
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Conversion Box */}
-              <motion.div 
-                className="absolute right-0 sm:-right-8 -top-6 sm:-top-8 z-40 bg-white p-2 sm:p-5 rounded-xl sm:rounded-2xl shadow-xl border border-gray-100 scale-75 sm:scale-100 origin-top-right"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              >
-                <div className="flex items-center gap-2 sm:gap-4">
-                  <div className="w-6 h-6 sm:w-10 sm:h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-                    <BarChart3 className="w-3 h-3 sm:w-5 sm:h-5" />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-[9px] sm:text-xs font-bold uppercase tracking-wider">Conversion</p>
-                    <p className="text-sm sm:text-xl font-black text-gray-900">+42.8%</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* ROAS Box */}
-              <motion.div 
-                className="absolute left-0 sm:-left-12 -bottom-4 sm:-bottom-12 z-40 bg-white p-2 sm:p-5 rounded-xl sm:rounded-2xl shadow-xl border border-gray-100 scale-75 sm:scale-100 origin-bottom-left"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              >
-                <div className="flex items-center gap-2 sm:gap-4">
-                  <div className="w-6 h-6 sm:w-10 sm:h-10 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-600">
-                    <LineChart className="w-3 h-3 sm:w-5 sm:h-5" />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-[9px] sm:text-xs font-bold uppercase tracking-wider">ROAS</p>
-                    <p className="text-sm sm:text-xl font-black text-gray-900">4.2x Avg</p>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
+            <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/80 text-blue-700 font-bold text-xs md:text-sm tracking-widest uppercase mb-12 border border-blue-100 shadow-[0_10px_40px_rgba(37,99,235,0.1)] backdrop-blur-xl">
+              <Sparkles className="w-4 h-4 text-blue-500 animate-pulse" /> Growth Marketing Agency
+            </span>
           </motion.div>
 
-          {/* Data Driven ROI block strictly for Mobile - shown at bottom of grid */}
+          <motion.h1 
+            initial={{ opacity: 0, filter: "blur(20px)", y: 40 }}
+            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="text-6xl sm:text-7xl lg:text-9xl font-black text-slate-900 tracking-tighter leading-[0.95] mb-10"
+          >
+            Scale Your Revenue <br className="hidden md:block" />
+            With <span className="relative inline-block">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500">Precision.</span>
+              <motion.span 
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 1.2, delay: 0.8 }}
+                className="absolute -bottom-2 left-0 h-2 bg-blue-600/20 rounded-full"
+              />
+            </span>
+          </motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xl sm:text-2xl lg:text-3xl text-slate-600 font-medium leading-[1.4] mb-16 max-w-5xl mx-auto px-4 lg:px-12"
+          >
+            We design and execute data-driven marketing infrastructures <br className="hidden lg:block" />
+            that turn clicks into measurable enterprise growth.
+          </motion.p>
+          
           <motion.div 
-            className="flex lg:hidden items-center justify-center gap-4 text-[10px] font-bold text-gray-400 uppercase tracking-wider w-full mt-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col sm:flex-row items-center gap-6 justify-center w-full max-w-md md:max-w-none"
           >
-            <span>Data-Driven</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-gray-300"></span>
-            <span>ROI Focused</span>
+            <Button size="lg" variant="default" className="relative group w-full sm:w-auto h-20 px-14 text-2xl rounded-[2rem] shadow-2xl shadow-blue-600/30 overflow-hidden active:scale-95 transition-transform">
+              <motion.div 
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 z-0"
+              />
+              <span className="relative z-10">Book Strategy Session</span>
+              <ArrowRight className="ml-3 w-7 h-7 relative z-10" />
+            </Button>
+            <Button size="lg" variant="outline" className="w-full sm:w-auto h-20 px-14 text-2xl rounded-[2rem] border-2 border-slate-200 bg-white/50 backdrop-blur-xl hover:bg-white active:scale-95 transition-transform">
+              View Case Studies
+            </Button>
           </motion.div>
-
-        </div>
+          
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4 }}
+            transition={{ duration: 1, delay: 1.5 }}
+            className="mt-16 flex items-center justify-center gap-6 text-[10px] sm:text-xs font-black text-slate-400 uppercase tracking-[0.3em]"
+          >
+            <span>Data-Driven Strategy</span>
+            <span className="w-2 h-2 rounded-full bg-slate-300"></span>
+            <span>Unmatched ROI Focus</span>
+          </motion.div>
+        </motion.div>
       </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white to-transparent pointer-events-none z-30" />
     </section>
   );
 }

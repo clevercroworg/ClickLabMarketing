@@ -35,9 +35,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {/* Fill hover animation for Outline */}
+        {/* Fill hover animation for Outline - Overlays the border for a seamless look */}
         {variant === 'outline' && (
-           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] rounded-full -z-10" />
+           <div className="absolute inset-[-2px] bg-gradient-to-r from-blue-600 to-cyan-500 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] rounded-full -z-10" />
         )}
         
         {/* Glow spread for Premium and Default */}
