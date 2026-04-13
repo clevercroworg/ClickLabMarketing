@@ -25,14 +25,13 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 inline-block shadow-2xl">
               <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse shadow-[0_0_10px_rgba(96,165,250,0.8)]"></span>
-              <span className="text-xs font-bold tracking-widest text-blue-100 uppercase">The ClickLab Story</span>
+              <span className="text-xs font-bold tracking-widest text-blue-100 uppercase">Your Digital Marketing Expert</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-8 leading-tight drop-shadow-lg">
-              We Don't Track Clicks.<br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">We Track Revenue.</span>
+              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Click Lab Marketing</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-300 mb-0 leading-relaxed font-medium max-w-3xl mx-auto">
-              ClickLab was founded on a simple premise: marketing should be an investment, not an expense. We are a team of data-obsessed growth engineers building systems that predictably scale businesses.
+              A company that serves effortlessly in all the digital platforms. If you're looking for digital guidance who cares about the performance of your business and will give honest advice on where best to spend your money, then contact us today.
             </p>
           </div>
         </div>
@@ -43,30 +42,26 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 md:px-8">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">The Agency Standard is Broken.</h2>
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">Why Choose Click Lab?</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Most digital marketing agencies will sell you on "vanity metrics"—impressions, likes, and cheap clicks that never actually convert. They hide behind confusing PDF reports and lock you into long-term contracts.
+                We can tell you exactly what is and isn't currently working for your business online and plan a strategy to help get you customers fast. We care about the performance of your business and will give honest advice on where best to spend your money.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed font-semibold">
-                We do things differently.
+                Results-driven. Always transparent.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-6">
-               <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
-                 <div className="text-blue-600 font-black text-4xl mb-2">10+</div>
-                 <div className="text-gray-900 font-bold">Years Experience</div>
+            <div className="grid grid-cols-3 gap-6">
+               <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100 text-center">
+                 <div className="text-blue-600 font-black text-4xl mb-2">250+</div>
+                 <div className="text-gray-900 font-bold">Happy Clients</div>
                </div>
-               <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
-                 <div className="text-blue-600 font-black text-4xl mb-2">$50M+</div>
-                 <div className="text-gray-900 font-bold">Ad Spend Managed</div>
+               <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100 text-center">
+                 <div className="text-blue-600 font-black text-4xl mb-2">370+</div>
+                 <div className="text-gray-900 font-bold">Projects Done</div>
                </div>
-               <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
-                 <div className="text-blue-600 font-black text-4xl mb-2">350%</div>
-                 <div className="text-gray-900 font-bold">Average ROAS</div>
-               </div>
-               <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100">
-                 <div className="text-blue-600 font-black text-4xl mb-2">24/7</div>
-                 <div className="text-gray-900 font-bold">Client Support</div>
+               <div className="bg-gray-50 p-6 rounded-3xl border border-gray-100 text-center">
+                 <div className="text-blue-600 font-black text-4xl mb-2">24</div>
+                 <div className="text-gray-900 font-bold">Support Available</div>
                </div>
             </div>
           </div>
