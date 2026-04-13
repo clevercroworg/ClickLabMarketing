@@ -97,7 +97,7 @@ export function Navbar() {
               </div>
 
               {/* Centered Nav Links */}
-              <div className="hidden md:flex items-center justify-center gap-8 flex-1">
+              <div className="hidden lg:flex items-center justify-center gap-5 xl:gap-8">
 
                 <Link
                   href="/about"
@@ -178,7 +178,7 @@ export function Navbar() {
               </div>
 
               {/* Right Action */}
-              <div className="hidden md:flex items-center justify-end gap-6 flex-1">
+              <div className="hidden lg:flex items-center justify-end gap-6 flex-1">
                 <Link href="/contact">
                   <Button variant="premium" className="px-6">
                     Get in Touch <ArrowRight className="w-4 h-4 ml-2" />
@@ -188,7 +188,7 @@ export function Navbar() {
 
               {/* Mobile Menu Toggle */}
               <button
-                className="md:hidden p-2 text-gray-600 hover:text-blue-600 transition-colors flex-none"
+                className="lg:hidden p-2 text-gray-600 hover:text-blue-600 transition-colors flex-none"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? <X /> : <Menu />}
@@ -205,7 +205,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="fixed top-[80px] left-0 w-full bg-white border-b border-gray-100 shadow-xl z-40 md:hidden overflow-y-auto max-h-[calc(100vh-80px)]"
+            className="fixed top-[80px] left-0 w-full bg-white border-b border-gray-100 shadow-xl z-40 lg:hidden overflow-y-auto max-h-[calc(100vh-80px)]"
           >
             <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
               <Link
