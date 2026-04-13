@@ -14,7 +14,7 @@ export function CTA() {
           {/* Left Side: Content */}
           <div className="lg:w-1/2 relative z-10 text-center lg:text-left mb-10 lg:mb-0">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight leading-tight">
-              Boost your <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">revenue</span>
+              Talk to our <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">expert</span>
             </h2>
             <p className="text-base text-gray-300 font-medium mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
               We help businesses prosper throughout the marketing funnel to surge revenue, improve brand visibility and loyalty.

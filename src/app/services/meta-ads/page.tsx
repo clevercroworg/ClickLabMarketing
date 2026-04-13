@@ -44,9 +44,9 @@ export default function MetaAdsPage() {
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-4xl text-left">
             <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-6 leading-tight drop-shadow-lg">
-              Meta Ads Management
+              Meta Ads <span className="text-cyan-400">Management</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 mb-2 leading-relaxed font-medium max-w-2xl">
+            <p className="text-lg md:text-xl text-slate-300 mb-2 font-medium max-w-[90vw] md:max-w-4xl whitespace-nowrap overflow-hidden text-ellipsis">
               Scale your revenue with high-converting creative and aggressive media buying.
             </p>
           </div>
