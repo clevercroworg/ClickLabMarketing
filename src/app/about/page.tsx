@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import { Target, Users, ShieldCheck, Zap } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
+import { Target, ShieldCheck, Zap } from 'lucide-react';
+import { CTA } from '@/components/sections/CTA';
+import { TestimonialsCarousel } from '@/components/sections/TestimonialsCarousel';
 
 export const metadata: Metadata = {
   title: 'About ClickLab | Premium Digital Marketing Agency',
@@ -101,21 +101,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 bg-blue-600 text-white">
-        <div className="container mx-auto px-4 md:px-8 text-center">
-          <Users className="w-16 h-16 mx-auto mb-6 text-blue-200" />
-          <h2 className="text-4xl md:text-5xl font-black mb-6">Ready to Scale with a Trusted Partner?</h2>
-          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto font-medium">
-            Let's discuss your revenue goals and see if we're a mutual fit.
-          </p>
-          <Link href="/contact">
-            <Button className="bg-white text-blue-600 hover:bg-gray-50 px-10 py-6 text-lg font-bold">
-              Schedule Your Strategy Call
-            </Button>
-          </Link>
-        </div>
-      </section>
+      <TestimonialsCarousel />
+      <CTA />
     </div>
   );
 }

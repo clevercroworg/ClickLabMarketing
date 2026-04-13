@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { ArrowRight, Target, BarChart, Zap, CheckCircle2, ShieldCheck, TrendingUp, SearchIcon, Rocket, MousePointer2 } from 'lucide-react';
 import { CTA } from '@/components/sections/CTA';
 import { TestimonialsCarousel } from '@/components/sections/TestimonialsCarousel';
+import { WorldwideClients } from '@/components/sections/WorldwideClients';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 
@@ -155,6 +156,7 @@ export default function GoogleAdsPage() {
         </div>
       </section>
 
+      <WorldwideClients />
       <TestimonialsCarousel />
       <CTA />
     </div>

@@ -5,6 +5,8 @@ import { ToolsCarousel } from "@/components/sections/ToolsCarousel";
 import { Process } from "@/components/sections/Process";
 import { Philosophy } from "@/components/sections/Philosophy";
 import { Expertise } from "@/components/sections/Expertise";
+import { Portfolio } from "@/components/sections/Portfolio";
+import { WorldwideClients } from "@/components/sections/WorldwideClients";
 import { TestimonialsCarousel } from "@/components/sections/TestimonialsCarousel";
 import { CTA } from "@/components/sections/CTA";
 
@@ -18,6 +20,8 @@ export default function Home() {
       <Process />
       <Philosophy />
       <Expertise />
+      <Portfolio />
+      <WorldwideClients />
       <TestimonialsCarousel options={{ loop: true, align: "start" }} />
       <CTA />
     </main>

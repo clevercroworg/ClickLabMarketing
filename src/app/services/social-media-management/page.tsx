@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { ArrowRight, MessageCircle, Heart, Share2, PenTool, BrainCircuit, LineChart, Rocket } from 'lucide-react';
 import { CTA } from '@/components/sections/CTA';
 import { TestimonialsCarousel } from '@/components/sections/TestimonialsCarousel';
+import { WorldwideClients } from '@/components/sections/WorldwideClients';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 
@@ -155,6 +156,7 @@ export default function SocialMediaPage() {
         </div>
       </section>
 
+      <WorldwideClients />
       <TestimonialsCarousel />
       <CTA />
     </div>
