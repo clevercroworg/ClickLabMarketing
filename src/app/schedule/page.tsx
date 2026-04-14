@@ -190,7 +190,7 @@ export default function SchedulePage() {
                   <textarea rows={3} placeholder="What does success look like for you in the next 90 days?" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium resize-none"></textarea>
                 </div>
 
-                <Button type="submit" variant="premium" className="w-full py-4 text-lg mt-4 flex items-center justify-center">
+                <Button type="submit" variant="premium" className="w-full py-4 text-base sm:text-lg mt-4 flex items-center justify-center whitespace-nowrap">
                   Schedule Free Consultation
                 </Button>
 
