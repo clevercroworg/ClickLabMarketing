@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 
 // Inline SVG icons for background flow (lightweight, no external deps)
 const BgIcon = ({ children, className }: { children: React.ReactNode; className?: string }) => (
@@ -142,13 +143,17 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center gap-5 justify-center w-full sm:w-auto"
         >
-          <Button size="lg" variant="default" className="btn-shimmer w-full sm:w-auto h-14 px-10 text-lg rounded-2xl shadow-xl shadow-blue-600/30 active:scale-[0.97] transition-transform">
-            Get Started
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
-          <Button size="lg" variant="outline" className="w-full sm:w-auto h-14 px-10 text-lg rounded-2xl border-2 border-white/15 bg-white/[0.05] text-white backdrop-blur-lg hover:border-transparent active:scale-[0.97] transition-all duration-200">
-            View Case Studies
-          </Button>
+          <Link href="/contact">
+            <Button size="lg" variant="default" className="btn-shimmer w-full sm:w-auto h-14 px-10 text-lg rounded-2xl shadow-xl shadow-blue-600/30 active:scale-[0.97] transition-transform">
+              Get Started
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
+          <Link href="/portfolio">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto h-14 px-10 text-lg rounded-2xl border-2 border-white/15 bg-white/[0.05] text-white backdrop-blur-lg hover:border-transparent active:scale-[0.97] transition-all duration-200">
+              View Portfolio
+            </Button>
+          </Link>
         </motion.div>
 
         {/* Trust Label */}

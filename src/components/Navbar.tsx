@@ -152,7 +152,7 @@ export function Navbar() {
                         </div>
                         <div className="bg-gray-50 p-4 border-t border-gray-100 flex justify-between items-center">
                           <span className="text-sm font-bold text-gray-600">Need a custom solution?</span>
-                          <Link href="/contact" className="text-sm font-bold text-blue-600 flex items-center hover:text-blue-700">
+                          <Link href="/schedule" className="text-sm font-bold text-blue-600 flex items-center hover:text-blue-700">
                             Book a Consultation <ArrowRight className="w-4 h-4 ml-1" />
                           </Link>
                         </div>
