@@ -56,7 +56,7 @@ export function Footer() {
                 </div>
                 <div>
                   <span className="block text-gray-500 text-sm mb-1 uppercase tracking-wider">Email Us</span>
-                  <a href="mailto:contact@clicklabmarketing.com" className="text-white hover:text-cyan-400 transition-colors text-lg font-semibold block break-all">contact@clicklabmarketing.com</a>
+                  <a href="mailto:contact@clicklabmarketing.com" className="text-white hover:text-cyan-400 transition-colors text-sm sm:text-base lg:text-lg font-semibold block tracking-tight">contact@clicklabmarketing.com</a>
                 </div>
               </li>
               <li className="flex items-start gap-4">

@@ -154,13 +154,13 @@ export function Hero() {
         {/* Trust Label */}
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.5 }}
+          whileInView={{ opacity: 0.8 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="mt-8 sm:mt-14 flex items-center justify-center gap-5 text-[10px] sm:text-xs font-black text-slate-500 uppercase tracking-[0.25em]"
+          className="mt-8 sm:mt-14 flex items-center justify-center gap-5 text-[10px] sm:text-xs font-black text-slate-300 uppercase tracking-[0.25em]"
         >
           <span>Data-Driven Strategy</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+          <span className="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
           <span>Unmatched ROI Focus</span>
         </motion.div>
       </div>
