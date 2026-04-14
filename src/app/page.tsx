@@ -1,5 +1,4 @@
 import { Hero } from "@/components/sections/Hero";
-import { ClientLogos } from "@/components/sections/ClientLogos";
 import { Services } from "@/components/sections/Services";
 import { ToolsCarousel } from "@/components/sections/ToolsCarousel";
 import { Process } from "@/components/sections/Process";
@@ -14,7 +13,6 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
       <Hero />
-      <ClientLogos />
       <Services />
       <ToolsCarousel />
       <Process />

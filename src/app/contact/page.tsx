@@ -57,7 +57,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-1">Email Us</h4>
-                    <a href="mailto:hello@clicklab.com" className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">hello@clicklab.com</a>
+                    <a href="mailto:contact@clicklabmarketing.com" className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">contact@clicklabmarketing.com</a>
                   </div>
                 </div>
 
@@ -71,35 +71,6 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mr-5 flex-shrink-0">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-1">Headquarters</h4>
-                    <p className="text-xl font-bold text-gray-900">
-                      100 Marketing Way,<br/>
-                      Growth District, NY 10001
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* FAQ Stub */}
-              <div className="pt-8 border-t border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                   <MessageSquare className="w-5 h-5 text-blue-600" /> Quick FAQ
-                </h3>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-bold text-gray-900">Do you work with startups?</h4>
-                    <p className="text-gray-600 text-sm mt-1">Yes! We work with seeded startups scaling to MVP and established enterprises.</p>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900">Is there a minimum monthly ad spend?</h4>
-                    <p className="text-gray-600 text-sm mt-1">For our paid media services, we generally require a minimum ad spend of $5,000/mo to ensure data statistical significance.</p>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -120,9 +91,15 @@ export default function ContactPage() {
                    </div>
                  </div>
 
-                 <div className="space-y-2">
-                   <label className="text-sm font-bold text-gray-900">Work Email <span className="text-red-500">*</span></label>
-                   <input type="email" required placeholder="john@company.com" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium" />
+                 <div className="grid md:grid-cols-2 gap-6">
+                   <div className="space-y-2">
+                     <label className="text-sm font-bold text-gray-900">Work Email <span className="text-red-500">*</span></label>
+                     <input type="email" required placeholder="john@company.com" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium" />
+                   </div>
+                   <div className="space-y-2">
+                     <label className="text-sm font-bold text-gray-900">Phone Number <span className="text-red-500">*</span></label>
+                     <input type="tel" required placeholder="+1 (555) 000-0000" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium" />
+                   </div>
                  </div>
 
                  <div className="space-y-2">

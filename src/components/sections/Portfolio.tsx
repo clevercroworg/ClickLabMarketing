@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 const portfolioItems = [
@@ -22,6 +22,7 @@ const portfolioItems = [
 
 export function Portfolio() {
   const [visibleCount, setVisibleCount] = useState(9); // Initial 3x3 grid (9 items)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
   const handleLoadMore = () => {
     setVisibleCount((prev) => Math.min(prev + 3, portfolioItems.length));
@@ -51,7 +52,8 @@ export function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative rounded-3xl overflow-hidden bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300"
+              className="group relative rounded-3xl overflow-hidden bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+              onClick={() => setSelectedImage(item.image)}
             >
               {/* Image container focusing on hero section using object-top */}
               <div className="w-full h-72 md:h-80 overflow-hidden bg-gray-100 relative">
@@ -84,6 +86,36 @@ export function Portfolio() {
           </div>
         )}
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            onClick={() => setSelectedImage(null)}
+          >
+            <button 
+              className="absolute top-6 right-6 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition-all"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              src={selectedImage}
+              alt="Portfolio Expansion"
+              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()} 
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

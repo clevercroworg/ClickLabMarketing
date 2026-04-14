@@ -13,6 +13,7 @@ const servicesMenu = [
   { name: "Social Media", href: "/services/social-media-management", description: "Engaged community building", icon: "/logos/social-media.svg" },
   { name: "Web Development", href: "/services/website-development", description: "High-performance websites", icon: "/logos/website.svg" },
   { name: "SEO", href: "/services/seo", description: "Dominate search rankings", icon: "/logos/seo.svg" },
+  { name: "Landing Pages", href: "/services/landing-page-design", description: "Data-driven, highly optimized pages", icon: "/logos/landing-page.svg" },
 ];
 
 const navLinks = [
