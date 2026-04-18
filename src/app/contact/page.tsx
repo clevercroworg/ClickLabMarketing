@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
-
+import ContactForm from '@/components/forms/ContactForm';
 export const metadata: Metadata = {
   title: 'Contact Us | ClickLab Marketing Agency',
   description: 'Get in touch with ClickLab Marketing. Request a free audit, ask a question, or scale your revenue with our expert digital marketing services.',
@@ -75,64 +75,7 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form UI */}
-            <div className="bg-white p-8 md:p-10 rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-gray-100 relative overflow-hidden">
-               {/* Decorative background blob */}
-               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600 opacity-[0.03] rounded-bl-[100px] pointer-events-none -z-10" />
-
-               <form className="space-y-6">
-                 <div className="grid md:grid-cols-2 gap-6">
-                   <div className="space-y-2">
-                     <label className="text-sm font-bold text-gray-900">First Name</label>
-                     <input type="text" placeholder="John" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium" />
-                   </div>
-                   <div className="space-y-2">
-                     <label className="text-sm font-bold text-gray-900">Last Name</label>
-                     <input type="text" placeholder="Doe" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium" />
-                   </div>
-                 </div>
-
-                 <div className="grid md:grid-cols-2 gap-6">
-                   <div className="space-y-2">
-                     <label className="text-sm font-bold text-gray-900">Work Email <span className="text-red-500">*</span></label>
-                     <input type="email" required placeholder="john@company.com" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium" />
-                   </div>
-                   <div className="space-y-2">
-                     <label className="text-sm font-bold text-gray-900">Phone Number <span className="text-red-500">*</span></label>
-                     <input type="tel" required placeholder="+1 (555) 000-0000" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium" />
-                   </div>
-                 </div>
-
-                 <div className="space-y-2">
-                   <label className="text-sm font-bold text-gray-900">Company Name</label>
-                   <input type="text" placeholder="Company Inc." className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium" />
-                 </div>
-
-                 <div className="space-y-2">
-                   <label className="text-sm font-bold text-gray-900">Services Required</label>
-                   <select defaultValue="" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium text-gray-600">
-                     <option value="" disabled>Select a primary service</option>
-                     <option value="google-ads">Google Ads Management</option>
-                     <option value="meta-ads">Meta Ads & Social Advertising</option>
-                     <option value="web-dev">Website Development</option>
-                     <option value="seo">SEO & Organic Growth</option>
-                     <option value="full-stack">Full-Stack Retainer (All of the above)</option>
-                   </select>
-                 </div>
-
-                 <div className="space-y-2">
-                   <label className="text-sm font-bold text-gray-900">How can we help? <span className="text-red-500">*</span></label>
-                   <textarea required rows={4} placeholder="Tell us about your current challenges and revenue goals..." className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium resize-none"></textarea>
-                 </div>
-
-                 <Button type="submit" variant="premium" className="w-full py-4 text-lg mt-4 flex items-center justify-center">
-                   Send Message <Send className="w-5 h-5 ml-2" />
-                 </Button>
-                 
-                 <p className="text-xs text-center text-gray-500 mt-4">
-                   By submitting this form, you agree to our Privacy Policy.
-                 </p>
-               </form>
-            </div>
+            <ContactForm />
 
           </div>
         </div>
