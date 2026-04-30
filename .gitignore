@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# Original uncompressed portfolio images
+public/portfolio/_originals_backup/

@@ -138,7 +138,7 @@ export function Navbar() {
                               className="group/item flex items-center p-3 hover:bg-slate-50 border border-transparent hover:border-slate-100 rounded-2xl transition-all duration-300"
                             >
                               <div className="w-12 h-12 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center p-2.5 mr-4 group-hover/item:shadow-md group-hover/item:scale-105 transition-all">
-                                <img src={service.icon} alt={service.name} className="w-full h-full object-contain" />
+                                <Image src={service.icon} alt={service.name} width={32} height={32} className="w-full h-full object-contain" />
                               </div>
                               <div>
                                 <h4 className="text-sm font-bold text-slate-900 group-hover/item:text-blue-600 transition-colors mb-0.5">

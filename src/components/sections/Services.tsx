@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Megaphone, Search, Target, Layout, MousePointer2, Share2, Mail, ArrowRight } from "lucide-react";
 
@@ -101,7 +102,7 @@ export function Services() {
                 <div className={`absolute top-0 right-0 w-48 h-48 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-bl-[100px] pointer-events-none`} />
 
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-10 bg-white shadow-lg shadow-gray-200/50 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 border border-gray-100`}>
-                  <img src={service.logo} alt={service.title} className="w-10 h-10 object-contain drop-shadow-sm" />
+                  <Image src={service.logo} alt={service.title} width={40} height={40} className="w-10 h-10 object-contain drop-shadow-sm" />
                 </div>
                 
                 <h3 className="text-2xl font-black mb-4 text-gray-900 group-hover:text-blue-600 transition-colors tracking-tight">

@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 const clientLogos = [
   { name: "Lake Rotoiti Hot Pools", src: "/clients/Lake-Rotoiti-Hot-Pools.png" },
   { name: "Ektha", src: "/clients/ektha.png" },
@@ -36,9 +38,12 @@ export function WorldwideClients() {
                 className="flex-none px-6 flex justify-center items-center hover:scale-110 transition-transform duration-300"
                 title={client.name}
               >
-                <img 
+                <Image 
                   src={client.src} 
-                  alt={client.name} 
+                  alt={client.name}
+                  width={96}
+                  height={96}
+                  sizes="96px"
                   className="h-20 md:h-24 w-auto object-contain transition-transform duration-500" 
                 />
               </div>

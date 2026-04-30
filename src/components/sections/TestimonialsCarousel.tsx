@@ -16,28 +16,32 @@ const testimonials = [
     role: "CMO at TechFlow",
     text: "ClickLab didn't just redesign our strategy; they fundamentally changed our revenue trajectory. Our cost-per-acquisition dropped by 45% in the first quarter.",
     rating: 5,
-    image: "https://i.pravatar.cc/150?img=1"
+    initials: "SJ",
+    color: "bg-blue-600",
   },
   {
     name: "Marcus Aurelius",
     role: "Founder of ScaleUp",
     text: "The web design team is world-class. They built an experience that felt premium, loaded in under a second, and doubled our conversion rate overnight.",
     rating: 5,
-    image: "https://i.pravatar.cc/150?img=11"
+    initials: "MA",
+    color: "bg-cyan-600",
   },
   {
     name: "Elena Rodriguez",
     role: "VP Marketing, NovaCorp",
     text: "A truly data-first approach. Every decision was backed by hard numbers, and the custom tracking infrastructure they built gave us visibility we never had.",
     rating: 5,
-    image: "https://i.pravatar.cc/150?img=5"
+    initials: "ER",
+    color: "bg-indigo-600",
   },
   {
     name: "David Chen",
     role: "E-comm Director",
     text: "Their ad creatives are stunning, and their media buying is ruthless. We scaled from $50k to $300k monthly spend while actually improving ROAS.",
     rating: 5,
-    image: "https://i.pravatar.cc/150?img=8"
+    initials: "DC",
+    color: "bg-emerald-600",
   }
 ]
 
@@ -109,7 +113,10 @@ export function TestimonialsCarousel(props: PropType) {
                   </p>
 
                   <div className="flex items-center gap-4 mt-auto">
-                     <img src={testimonial.image} alt={testimonial.name} className="w-14 h-14 rounded-full border-2 border-white shadow-sm" />
+                     {/* SVG initial avatar — zero network cost, no external requests */}
+                     <div className={`w-14 h-14 rounded-full ${testimonial.color} flex items-center justify-center text-white font-bold text-lg shadow-sm`}>
+                       {testimonial.initials}
+                     </div>
                      <div>
                        <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
                        <p className="text-sm text-gray-500 font-medium">{testimonial.role}</p>

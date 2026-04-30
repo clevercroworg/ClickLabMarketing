@@ -2,22 +2,22 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, X } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { X } from "lucide-react";
+import Image from "next/image";
 
 const portfolioItems = [
-  { id: 1, title: "Harmony", image: "/portfolio/harmony.png" },
-  { id: 2, title: "Bethlehem", image: "/portfolio/bethlehem.png" },
-  { id: 3, title: "Karavali", image: "/portfolio/karavali.png" },
-  { id: 4, title: "Smart Build", image: "/portfolio/smart-build1.png" },
-  { id: 5, title: "Sky Head", image: "/portfolio/sky-head.png" },
-  { id: 6, title: "Top Gear Nutrition", image: "/portfolio/top-gear-nutrition.png" },
-  { id: 7, title: "British Dart", image: "/portfolio/british-dart.png" },
-  { id: 8, title: "Lake Rotoiti Hot Pools", image: "/portfolio/screencapture-lakerotoitihotpools-co-nz-2022-09-28-10_22_18.png" },
-  { id: 9, title: "Zrava", image: "/portfolio/zrava.png" },
-  { id: 10, title: "Simply", image: "/portfolio/simply.png" },
-  { id: 11, title: "Recreate", image: "/portfolio/recreate-scaled.jpg" },
-  { id: 12, title: "Sugar", image: "/portfolio/sugar-scaled.jpg" },
+  { id: 1, title: "Harmony", image: "/portfolio/harmony.webp" },
+  { id: 2, title: "Bethlehem", image: "/portfolio/bethlehem.webp" },
+  { id: 3, title: "Karavali", image: "/portfolio/karavali.webp" },
+  { id: 4, title: "Smart Build", image: "/portfolio/smart-build1.webp" },
+  { id: 5, title: "Sky Head", image: "/portfolio/sky-head.webp" },
+  { id: 6, title: "Top Gear Nutrition", image: "/portfolio/top-gear-nutrition.webp" },
+  { id: 7, title: "British Dart", image: "/portfolio/british-dart.webp" },
+  { id: 8, title: "Lake Rotoiti Hot Pools", image: "/portfolio/screencapture-lakerotoitihotpools-co-nz-2022-09-28-10_22_18.webp" },
+  { id: 9, title: "Zrava", image: "/portfolio/zrava.webp" },
+  { id: 10, title: "Simply", image: "/portfolio/simply.webp" },
+  { id: 11, title: "Recreate", image: "/portfolio/recreate-scaled.webp" },
+  { id: 12, title: "Sugar", image: "/portfolio/sugar-scaled.webp" },
 ];
 
 export function Portfolio() {
@@ -58,10 +58,14 @@ export function Portfolio() {
               {/* Image container focusing on hero section using object-top */}
               <div className="w-full h-72 md:h-80 overflow-hidden bg-gray-100 relative">
                 <div className="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors z-10 duration-500"></div>
-                <img 
+                <Image 
                   src={item.image} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700 ease-out" 
+                  alt={item.title}
+                  width={600}
+                  height={400}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading={index < 3 ? "eager" : "lazy"}
                 />
               </div>
               

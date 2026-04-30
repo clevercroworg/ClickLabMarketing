@@ -135,12 +135,12 @@ body {
     0%   { transform: translateX(-100%) skewX(-12deg); }
     100% { transform: translateX(300%) skewX(-12deg); }
   }
-  .hero-orb-1 { animation: auroraOrb1 15s linear infinite; will-change: transform; }
-  .hero-orb-2 { animation: auroraOrb2 18s linear infinite; will-change: transform; }
-  .hero-orb-3 { animation: auroraOrb3 12s linear infinite; will-change: transform; }
-  .hero-orb-4 { animation: auroraOrb4 20s linear infinite; will-change: transform; }
-  .hero-orb-5 { animation: auroraOrb5 24s linear infinite; will-change: transform; }
-  .hero-glass-float { animation: glassFloat 6s ease-in-out infinite; will-change: transform; }
+  .hero-orb-1 { animation: auroraOrb1 15s linear infinite; }
+  .hero-orb-2 { animation: auroraOrb2 18s linear infinite; }
+  .hero-orb-3 { animation: auroraOrb3 12s linear infinite; }
+  .hero-orb-4 { animation: auroraOrb4 20s linear infinite; }
+  .hero-orb-5 { animation: auroraOrb5 24s linear infinite; }
+  .hero-glass-float { animation: glassFloat 6s ease-in-out infinite; }
   .hero-light-streak { animation: lightStreak 3.5s ease-in-out infinite 1s; }
   .btn-shimmer {
     position: relative;
@@ -167,7 +167,6 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    will-change: transform, opacity;
   }
   .hero-ripple-1 { animation: auroraRipple 8s ease-out infinite; }
   .hero-ripple-2 { animation: auroraRipple 8s ease-out infinite 2s; }
@@ -182,11 +181,9 @@ body {
   }
   .hero-wave {
     animation: heroWaveFlow 12s ease-in-out infinite;
-    will-change: transform;
   }
   .hero-wave-2 {
     animation: heroWaveFlow 16s ease-in-out infinite reverse;
-    will-change: transform;
   }
 
   /* Floating Icon Drift for hero background */
@@ -199,7 +196,14 @@ body {
   }
   .hero-icon-float {
     animation: iconDrift 8s ease-in-out infinite;
-    will-change: transform, opacity;
+  }
+
+  /* Disable expensive backdrop-blur on mobile for GPU savings */
+  @media (max-width: 768px) {
+    .hero-backdrop-reduce {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
   }
 
   /* WhatsApp Pulse */
