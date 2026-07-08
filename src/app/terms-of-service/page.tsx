@@ -1,83 +1,330 @@
-import { Metadata } from 'next';
-import { FileText } from 'lucide-react';
+"use client";
 
-export const metadata: Metadata = {
-  title: 'Terms of Service | ClickLab Marketing',
-  description: 'Terms and conditions for using ClickLab Marketing services and website.',
-};
+import { useState, useEffect, useRef } from "react";
+import { FileText, Search, ArrowUp, Printer, Calendar, CheckCircle2 } from "lucide-react";
+import data from "@/data/terms-of-service.json";
 
 export default function TermsOfServicePage() {
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Premium Hero for Legal */}
-      <section className="relative pt-[160px] pb-16 overflow-hidden bg-[#0f172a]">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-[20%] w-[60%] h-[100%] rounded-full bg-cyan-600/15 blur-[120px]"></div>
-          <div className="absolute inset-0 bg-[url('/bg-grid-white.svg')] opacity-[0.02]"></div>
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeSection, setActiveSection] = useState("introduction");
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const contentRefs = useRef<{ [key: string]: HTMLElement | null }>({});
+
+  // Filter sections based on search query
+  const filteredSections = data.sections.filter((section) => {
+    if (section.id === "introduction") return true; // Always keep introduction
+    const query = searchQuery.toLowerCase();
+    return (
+      section.title.toLowerCase().includes(query) ||
+      section.content.toLowerCase().includes(query)
+    );
+  });
+
+  // Track scroll position to highlight active section and show back to top button
+  useEffect(() => {
+    const handleScroll = () => {
+      // Toggle back to top button
+      setShowScrollTop(window.scrollY > 400);
+
+      // Determine active section
+      const scrollPosition = window.scrollY + 200;
+      let currentSection = "introduction";
+
+      for (const section of data.sections) {
+        const el = contentRefs.current[section.id];
+        if (el && el.offsetTop <= scrollPosition) {
+          currentSection = section.id;
+        }
+      }
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    const el = contentRefs.current[id];
+    if (el) {
+      const offset = el.offsetTop - 120; // Account for sticky navbar
+      window.scrollTo({
+        top: offset,
+        behavior: "smooth",
+      });
+      setActiveSection(id);
+    }
+  };
+
+  const handlePrint = () => {
+    window.print();
+  };
+
+  // Helper to render body text with clean structure
+  const renderContentText = (content: string, sectionId: string) => {
+    const lines = content.split("\n");
+    
+    // Custom layout for Acceptance Details
+    if (sectionId === "acceptance-details") {
+      const detailsMap: { [key: string]: string } = {};
+      lines.forEach((line) => {
+        // Better parser for key-value format
+        const match = line.match(/^([^:]+):\s*(.*)$/);
+        if (match) {
+          detailsMap[match[1].trim()] = match[2].trim();
+        } else {
+          // Fallback parsing for raw space separation
+          const pairMatch = line.match(/^(Owner Id|Owner Name|IP Address|Date Of Acceptance|Signatory Name|Contact Number|Email)\s+(.*)$/);
+          if (pairMatch) {
+            detailsMap[pairMatch[1].trim()] = pairMatch[2].trim();
+          }
+        }
+      });
+
+      return (
+        <div className="mt-8 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-500/20 rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-sm">
+          {/* Certificate-style background details */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -mr-10 -mt-10" />
+          
+          <div className="flex items-start gap-4 mb-6">
+            <div className="p-3 bg-emerald-100 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 rounded-2xl">
+              <CheckCircle2 className="w-6 h-6" />
+            </div>
+            <div>
+              <h4 className="text-gray-900 dark:text-slate-100 font-bold text-lg sm:text-xl">Acceptance Signed & Verified</h4>
+              <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
+                This document is electronically accepted and binding under the Information Technology Act, 2000.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-slate-150 dark:border-slate-800 pt-6 mt-4 text-sm font-medium">
+            {Object.entries(detailsMap).map(([key, value]) => (
+              <div key={key} className="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-800 flex flex-col gap-1">
+                <span className="text-[11px] text-slate-400 dark:text-slate-500 uppercase tracking-wider">{key}</span>
+                <span className="text-slate-800 dark:text-slate-200 break-all">{value}</span>
+              </div>
+            ))}
+            {/* Fallback if parsing failed to extract keys */}
+            {Object.keys(detailsMap).length === 0 && (
+              <div className="col-span-2 text-slate-700 dark:text-slate-300 whitespace-pre-line leading-relaxed">
+                {content}
+              </div>
+            )}
+          </div>
         </div>
-        <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 inline-block">
+      );
+    }
+
+    return lines.map((line, idx) => {
+      const trimmed = line.trim();
+      if (!trimmed) return null;
+
+      // Handle lists
+      if (trimmed.startsWith("-") || trimmed.startsWith("*")) {
+        return (
+          <li key={idx} className="ml-6 list-disc mb-3 text-slate-600 dark:text-slate-400 leading-relaxed text-sm sm:text-base pl-2">
+            {trimmed.substring(1).trim()}
+          </li>
+        );
+      }
+
+      // Handle specific merchant/customer text highlights or emails
+      if (trimmed.includes("@") && (trimmed.includes("Email:") || trimmed.includes("e-mail"))) {
+        return (
+          <p key={idx} className="mb-4 text-blue-600 dark:text-blue-400 hover:underline font-semibold text-sm sm:text-base">
+            {trimmed}
+          </p>
+        );
+      }
+
+      // Check if paragraph is numbered section like "1.1.", "2.1." inside content to add indentation
+      const isSubclause = /^\d+\.\d+\.?\s+/.test(trimmed);
+
+      return (
+        <p 
+          key={idx} 
+          className={`mb-5 text-slate-600 dark:text-slate-400 leading-relaxed text-sm sm:text-base font-normal ${
+            isSubclause ? "pl-4 md:pl-6 border-l-2 border-slate-100 dark:border-slate-800 py-0.5" : ""
+          }`}
+        >
+          {trimmed}
+        </p>
+      );
+    });
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50/30 dark:bg-slate-950/20 flex flex-col font-sans">
+      {/* Premium Hero Section */}
+      <section className="relative pt-[180px] pb-20 overflow-hidden bg-[#0a0f1d] border-b border-slate-900">
+        {/* Background Gradients */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[120%] rounded-full bg-blue-600/10 blur-[150px]" />
+          <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[120%] rounded-full bg-cyan-600/10 blur-[150px]" />
+          <div className="absolute inset-0 bg-[url('/bg-grid-white.svg')] opacity-[0.015]" />
+        </div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6">
             <FileText className="w-4 h-4 text-blue-400" />
             <span className="text-xs font-bold tracking-widest text-blue-100 uppercase">Legal</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
             Terms of Service
           </h1>
-          <p className="mt-4 text-slate-400 text-lg">Effective Date: April 14, 2026</p>
+          <p className="mt-4 text-slate-400 text-base sm:text-lg max-w-2xl mx-auto flex items-center justify-center gap-2">
+            <Calendar className="w-4 h-4 text-slate-500" />
+            Last updated on July 8th, 2026
+          </p>
         </div>
       </section>
 
-      {/* Content */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-          <div className="prose prose-lg prose-blue max-w-none text-gray-600">
-            <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">1. Acceptance of Terms</h2>
-            <p className="mb-6 leading-relaxed">
-              By accessing and using the website (clicklabmarketing.com) and the digital marketing services provided by <strong>ClickLab Marketing</strong> ("Company," "we," "us," our"), you signify your agreement to comply with these Terms of Service. If you do not agree with any part of these terms, you must not use our website or services.
-            </p>
+      {/* Main Content Layout */}
+      <div className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* Left Sticky Sidebar (Table of Contents) */}
+          <aside className="lg:col-span-4 sticky top-28 hidden lg:block bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 shadow-sm">
+            <h3 className="font-bold text-gray-900 dark:text-slate-100 text-lg mb-4 flex items-center gap-2">
+              <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              Terms Navigation
+            </h3>
 
-            <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">2. Services Provided</h2>
-            <p className="mb-6 leading-relaxed">
-              ClickLab Marketing provides digital marketing services, including but not limited to, Google Ads management, Meta Ads, SEO optimization, website development, and landing page design. The scope, deliverables, fees, and timelines for specific client projects are outlined in individually signed Master Service Agreements (MSAs) or Statements of Work (SOWs) which take precedence over these general terms for active clients.
-            </p>
+            {/* Keyword Search Input */}
+            <div className="relative mb-6">
+              <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search terms..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-slate-50 dark:bg-slate-950/50 border border-slate-200/80 dark:border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-all text-slate-800 dark:text-slate-200 font-medium"
+              />
+            </div>
 
-            <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">3. Intellectual Property Rights</h2>
-            <p className="mb-6 leading-relaxed">
-              All website content, including text, design, graphics, layouts, and software, is the exclusive property of ClickLab Marketing or its content suppliers and protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create derivative works from this content without express written consent. Client deliverables become the intellectual property of the client only upon full payment for the respective services.
-            </p>
+            <nav className="space-y-1 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar text-xs">
+              {filteredSections.map((section) => {
+                const isPart = section.id.startsWith("part-");
+                return (
+                  <button
+                    key={section.id}
+                    onClick={() => scrollToSection(section.id)}
+                    className={`w-full text-left px-3.5 py-2.5 rounded-xl transition-all duration-200 flex items-center gap-2 ${
+                      activeSection === section.id
+                        ? "bg-blue-50 dark:bg-blue-950/20 text-blue-700 dark:text-blue-400 font-bold shadow-sm shadow-blue-500/5 translate-x-1"
+                        : `text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900/50 ${
+                            isPart ? "font-semibold" : "font-normal pl-6"
+                          }`
+                    }`}
+                  >
+                    <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+                      activeSection === section.id ? "bg-blue-600 animate-pulse" : "bg-transparent"
+                    }`} />
+                    <span className="truncate">{section.title}</span>
+                  </button>
+                );
+              })}
+              {filteredSections.length === 0 && (
+                <p className="text-slate-400 text-xs text-center py-4">No sections matched your search.</p>
+              )}
+            </nav>
 
-            <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">4. User Conduct</h2>
-            <p className="mb-4 leading-relaxed">When utilizing our website or services, you agree not to:</p>
-            <ul className="list-disc pl-6 mb-6 space-y-2">
-              <li>Use the site in any way that violates any applicable federal, state, local, or international law or regulation.</li>
-              <li>Attempt to gain unauthorized access to, interfere with, or disrupt any parts of the site, the server on which the site is stored, or any server, computer, or database connected to our agency operations.</li>
-              <li>Impersonate or attempt to impersonate ClickLab Marketing, an employee, another user, or any other person or entity.</li>
-            </ul>
+            <div className="border-t border-slate-100 dark:border-slate-850 mt-6 pt-6 flex gap-4">
+              <button
+                onClick={handlePrint}
+                className="w-full flex items-center justify-center gap-2 bg-slate-50 dark:bg-slate-950/50 hover:bg-slate-100 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-300 py-3 rounded-xl text-sm font-bold border border-slate-200/50 dark:border-slate-800/85 transition-all active:scale-95 cursor-pointer"
+              >
+                <Printer className="w-4 h-4" />
+                Print / Save PDF
+              </button>
+            </div>
+          </aside>
 
-            <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">5. Disclaimer of Guarantees</h2>
-            <p className="mb-6 leading-relaxed">
-              While ClickLab Marketing utilizes data-driven strategies and industry best practices to scale our clients' digital revenue, we do not and cannot guarantee specific numerical results (e.g., exact return on ad spend, exact search engine ranking positions, or exact revenue increases) due to the unpredictable nature of third-party platforms (like Google or Facebook) and market variables outside our direct control.
-            </p>
+          {/* Right Main Content Panel */}
+          <main className="lg:col-span-8 bg-white dark:bg-slate-900 border border-slate-100/80 dark:border-slate-800/80 rounded-3xl p-6 sm:p-10 md:p-14 shadow-sm">
+            {/* Mobile Actions Panel */}
+            <div className="lg:hidden flex flex-col gap-4 mb-10 border-b border-slate-100 dark:border-slate-800 pb-8">
+              <div className="relative">
+                <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Search terms..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-slate-50 dark:bg-slate-950/50 border border-slate-200/80 dark:border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-all text-slate-800 dark:text-slate-200 font-medium"
+                />
+              </div>
+              <button
+                onClick={handlePrint}
+                className="w-full flex items-center justify-center gap-2 bg-slate-50 dark:bg-slate-950 hover:bg-slate-100 dark:hover:bg-slate-900 text-slate-700 dark:text-slate-300 py-3 rounded-xl text-sm font-bold border border-slate-200/50 dark:border-slate-800 transition-all"
+              >
+                <Printer className="w-4 h-4" />
+                Print / Save PDF
+              </button>
+            </div>
 
-            <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">6. Limitation of Liability</h2>
-            <p className="mb-6 leading-relaxed">
-              In no event shall ClickLab Marketing, nor its directors, employees, partners, agents, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use our services; or (ii) any conduct or content of any third party on the services.
-            </p>
+            <div className="prose prose-slate dark:prose-invert max-w-none">
+              {filteredSections.map((section) => {
+                const isPart = section.id.startsWith("part-");
+                return (
+                  <section
+                    key={section.id}
+                    ref={(el) => {
+                      contentRefs.current[section.id] = el;
+                    }}
+                    className={`policy-section ${
+                      section.id === "introduction"
+                        ? "mb-10"
+                        : isPart
+                        ? "mb-10 border-t border-slate-100 dark:border-slate-800 pt-10 first-of-type:border-t-0 first-of-type:pt-0"
+                        : "mb-12 scroll-mt-24 pb-8 border-b border-slate-50 dark:border-slate-850/50 last:border-0 last:pb-0"
+                    }`}
+                  >
+                    {section.id !== "introduction" && (
+                      <h2 
+                        className={`font-bold text-gray-900 dark:text-slate-100 font-sans tracking-tight ${
+                          isPart 
+                            ? "text-xl sm:text-2xl mb-8 uppercase text-blue-600 dark:text-blue-400 bg-blue-50/30 dark:bg-blue-950/10 px-4 py-3 rounded-xl border-l-4 border-blue-500" 
+                            : "text-lg sm:text-xl mb-5 flex items-center gap-2"
+                        }`}
+                      >
+                        {!isPart && <span className="w-1.5 h-5 bg-slate-400 rounded-full" />}
+                        {section.title}
+                      </h2>
+                    )}
+                    <div className="text-slate-600 dark:text-slate-350 font-sans tracking-wide leading-relaxed text-sm sm:text-base">
+                      {renderContentText(section.content, section.id)}
+                    </div>
+                  </section>
+                );
+              })}
 
-            <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">7. Amendments to Terms</h2>
-            <p className="mb-6 leading-relaxed">
-              We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will indicate at the top of this page the date such terms were last modified. Your continued use of the website following any changes signifies your acceptance of the new Terms of Service.
-            </p>
-
-            <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">8. Contact Information</h2>
-            <p className="mb-6 leading-relaxed">
-              If you have any questions about these Terms, please contact us at:<br/>
-              <strong>Email:</strong> <a href="mailto:contact@clicklabmarketing.com" className="text-blue-600 hover:underline">contact@clicklabmarketing.com</a><br/>
-              <strong>Phone:</strong> 8088233259
-            </p>
-          </div>
+              {filteredSections.length === 0 && (
+                <div className="text-center py-20">
+                  <p className="text-slate-400 text-lg">No sections match your search query: "{searchQuery}"</p>
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-700 font-bold mt-4 underline text-sm cursor-pointer"
+                  >
+                    Clear search filter
+                  </button>
+                </div>
+              )}
+            </div>
+          </main>
         </div>
-      </section>
+      </div>
+
+      {/* Floating Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:-translate-y-1 hover:scale-110 active:scale-95 z-50 animate-fade-in cursor-pointer"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp className="w-5 h-5" />
+        </button>
+      )}
     </div>
   );
 }
