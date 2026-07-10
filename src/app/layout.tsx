@@ -5,6 +5,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { LayoutWrapper } from "@/components/LayoutWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -34,12 +35,14 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        <Navbar />
-        <main className="flex-1">
+        
+        <LayoutWrapper
+          navbar={<Navbar />}
+          footer={<Footer />}
+          whatsapp={<WhatsAppButton />}
+        >
           {children}
-        </main>
-        <Footer />
-        <WhatsAppButton />
+        </LayoutWrapper>
 
         {/* Google Tag Manager — loaded after page becomes interactive */}
         <Script
