@@ -64,7 +64,7 @@ export default function SubscribedSuccessfully() {
           Thank You!
         </h1>
         <p className="text-slate-500 text-base font-medium leading-relaxed max-w-sm mx-auto">
-          Your payment has been processed successfully. Your subscription is now active and confirmed.
+          Your subscription is confirmed.
         </p>
       </motion.div>
     </div>
