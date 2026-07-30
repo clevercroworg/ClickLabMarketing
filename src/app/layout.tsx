@@ -4,7 +4,6 @@ import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 
 const inter = Inter({
@@ -39,7 +38,6 @@ export default function RootLayout({
         <LayoutWrapper
           navbar={<Navbar />}
           footer={<Footer />}
-          whatsapp={<WhatsAppButton />}
         >
           {children}
         </LayoutWrapper>

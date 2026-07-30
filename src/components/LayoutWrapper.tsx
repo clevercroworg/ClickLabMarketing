@@ -7,14 +7,13 @@ interface LayoutWrapperProps {
   children: React.ReactNode;
   navbar: React.ReactNode;
   footer: React.ReactNode;
-  whatsapp: React.ReactNode;
+  whatsapp?: React.ReactNode;
 }
 
 export function LayoutWrapper({
   children,
   navbar,
   footer,
-  whatsapp,
 }: LayoutWrapperProps) {
   const pathname = usePathname();
   // Hide ClickLab shell for any landing page path starting with "/lp"
@@ -29,7 +28,6 @@ export function LayoutWrapper({
       {navbar}
       <main className="flex-1">{children}</main>
       {footer}
-      {whatsapp}
     </>
   );
 }

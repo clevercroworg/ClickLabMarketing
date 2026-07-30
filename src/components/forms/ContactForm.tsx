@@ -104,10 +104,12 @@ export default function ContactForm() {
             <label className="text-sm font-bold text-gray-900" htmlFor="service">Services Required</label>
             <select id="service" name="service" defaultValue="" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium text-gray-900">
               <option value="" disabled>Select a primary service</option>
-              <option value="Google Ads Management">Google Ads Management</option>
-              <option value="Meta Ads & Social Advertising">Meta Ads & Social Advertising</option>
               <option value="Website Development">Website Development</option>
               <option value="SEO & Organic Growth">SEO & Organic Growth</option>
+              <option value="Google Ads Management">Google Ads Management</option>
+              <option value="Meta Ads & Social Advertising">Meta Ads & Social Advertising</option>
+              <option value="Social Media Management">Social Media Management</option>
+              <option value="Landing Page Design">Landing Page Design</option>
               <option value="Full-Stack Retainer">Full-Stack Retainer (All of the above)</option>
             </select>
           </div>

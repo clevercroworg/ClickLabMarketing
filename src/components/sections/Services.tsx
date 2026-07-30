@@ -7,6 +7,20 @@ import { Megaphone, Search, Target, Layout, MousePointer2, Share2, Mail, ArrowRi
 
 const services = [
   {
+    title: "Website Development",
+    description: "High-performance, conversion-optimized websites built with cutting-edge technology and premium aesthetics.",
+    logo: "/logos/website.svg",
+    color: "from-sky-600 to-sky-400",
+    slug: "website-development",
+  },
+  {
+    title: "SEO",
+    description: "Long-term organic growth strategies that dominate search rankings and build sustainable brand authority.",
+    logo: "/logos/seo.svg",
+    color: "from-blue-700 to-indigo-500",
+    slug: "seo",
+  },
+  {
     title: "Google Ads",
     description: "High-intent search campaigns and display strategies that capture ready-to-buy customers at the perfect moment.",
     logo: "/logos/google-ads.svg",
@@ -26,20 +40,6 @@ const services = [
     logo: "/logos/social-media.svg",
     color: "from-indigo-600 to-indigo-400",
     slug: "social-media-management",
-  },
-  {
-    title: "Website Development",
-    description: "High-performance, conversion-optimized websites built with cutting-edge technology and premium aesthetics.",
-    logo: "/logos/website.svg",
-    color: "from-sky-600 to-sky-400",
-    slug: "website-development",
-  },
-  {
-    title: "SEO",
-    description: "Long-term organic growth strategies that dominate search rankings and build sustainable brand authority.",
-    logo: "/logos/seo.svg",
-    color: "from-blue-700 to-indigo-500",
-    slug: "seo",
   },
   {
     title: "Landing Page Design",

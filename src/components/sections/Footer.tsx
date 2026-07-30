@@ -37,12 +37,12 @@ export function Footer() {
           <div className="lg:col-span-4">
             <h4 className="text-white font-bold text-lg mb-6 tracking-wide uppercase">Services</h4>
             <ul className="space-y-4 text-base font-medium">
+              <li><Link href="/services/website-development" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-blue-500"/> Website Development</Link></li>
+              <li><Link href="/services/seo" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-blue-500"/> SEO</Link></li>
               <li><Link href="/services/google-ads" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-blue-500"/> Google Ads</Link></li>
               <li><Link href="/services/meta-ads" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-blue-500"/> Meta Ads</Link></li>
-              <li><Link href="/services/social-media-management" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-blue-500"/> Social Media</Link></li>
-              <li><Link href="/services/website-development" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-blue-500"/> Web Development</Link></li>
-              <li><Link href="/services/seo" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-blue-500"/> SEO</Link></li>
-              <li><Link href="/services/landing-page-design" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-blue-500"/> Landing Pages</Link></li>
+              <li><Link href="/services/social-media-management" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-blue-500"/> Social Media Management</Link></li>
+              <li><Link href="/services/landing-page-design" className="hover:text-cyan-400 transition-colors flex items-center gap-2 group"><ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all text-blue-500"/> Landing Page Design</Link></li>
             </ul>
           </div>
 
@@ -65,7 +65,16 @@ export function Footer() {
                 </div>
                 <div>
                   <span className="block text-gray-500 text-[10px] sm:text-xs mb-0.5 uppercase tracking-wider">Direct Call</span>
-                  <a href="tel:8088233259" className="text-white hover:text-cyan-400 transition-colors text-[15px] sm:text-base lg:text-lg font-semibold">8088233259</a>
+                  <a href="tel:2164088962" className="text-white hover:text-cyan-400 transition-colors text-[15px] sm:text-base lg:text-lg font-semibold">(216) 408-8962</a>
+                </div>
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-blue-600/20 flex items-center justify-center flex-shrink-0 text-blue-400">
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
+                </div>
+                <div>
+                  <span className="block text-gray-500 text-[10px] sm:text-xs mb-0.5 uppercase tracking-wider">Location</span>
+                  <span className="text-white text-[15px] sm:text-base font-semibold">Boca Raton, Florida-33433</span>
                 </div>
               </li>
             </ul>

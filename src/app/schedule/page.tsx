@@ -102,7 +102,7 @@ export default function SchedulePage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-blue-600" />
-                  <a href="tel:8088233259" className="font-bold text-gray-900 hover:text-blue-600 transition-colors">8088233259</a>
+                  <a href="tel:2164088962" className="font-bold text-gray-900 hover:text-blue-600 transition-colors">(216) 408-8962</a>
                 </div>
               </div>
             </div>
@@ -135,7 +135,7 @@ export default function SchedulePage() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-gray-900">Phone <span className="text-red-500">*</span></label>
-                    <input type="tel" required placeholder="+91 98765 43210" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium" />
+                    <input type="tel" required placeholder="+1 (216) 408-8962" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium" />
                   </div>
                 </div>
 
@@ -163,11 +163,11 @@ export default function SchedulePage() {
                   <label className="text-sm font-bold text-gray-900">What services are you interested in?</label>
                   <select defaultValue="" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/50 focus:bg-white transition-all font-medium text-gray-600">
                     <option value="" disabled>Select a primary interest</option>
+                    <option value="web-dev">Website Development</option>
+                    <option value="seo">SEO & Organic Growth</option>
                     <option value="google-ads">Google Ads Management</option>
                     <option value="meta-ads">Meta Ads & Social Advertising</option>
                     <option value="social-media">Social Media Management</option>
-                    <option value="web-dev">Website Development</option>
-                    <option value="seo">SEO & Organic Growth</option>
                     <option value="landing-pages">Landing Page Design</option>
                     <option value="full-stack">Full-Stack Retainer (Multiple Services)</option>
                   </select>

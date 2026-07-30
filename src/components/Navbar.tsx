@@ -9,12 +9,12 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const servicesMenu = [
+  { name: "Website Development", href: "/services/website-development", description: "High-performance websites", icon: "/logos/website.svg" },
+  { name: "SEO", href: "/services/seo", description: "Dominate search rankings", icon: "/logos/seo.svg" },
   { name: "Google Ads", href: "/services/google-ads", description: "Search & display campaigns", icon: "/logos/google-ads.svg" },
   { name: "Meta Ads", href: "/services/meta-ads", description: "Precision targeting on Meta", icon: "/logos/meta.svg" },
-  { name: "Social Media", href: "/services/social-media-management", description: "Engaged community building", icon: "/logos/social-media.svg" },
-  { name: "Web Development", href: "/services/website-development", description: "High-performance websites", icon: "/logos/website.svg" },
-  { name: "SEO", href: "/services/seo", description: "Dominate search rankings", icon: "/logos/seo.svg" },
-  { name: "Landing Pages", href: "/services/landing-page-design", description: "Data-driven, highly optimized pages", icon: "/logos/landing-page.svg" },
+  { name: "Social Media Management", href: "/services/social-media-management", description: "Engaged community building", icon: "/logos/social-media.svg" },
+  { name: "Landing Page Design", href: "/services/landing-page-design", description: "Data-driven, highly optimized pages", icon: "/logos/landing-page.svg" },
 ];
 
 const navLinks = [

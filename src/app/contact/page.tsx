@@ -67,10 +67,34 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-1">Call Us</h4>
-                    <a href="tel:8088233259" className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">8088233259</a>
+                    <a href="tel:2164088962" className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">(216) 408-8962</a>
                   </div>
                 </div>
 
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mr-5 flex-shrink-0">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-1">Location & Map</h4>
+                    <p className="text-xl font-bold text-gray-900">Boca Raton, Florida-33433</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Map Embed Container */}
+              <div className="mt-8 rounded-2xl overflow-hidden border border-gray-200 shadow-lg h-64 relative">
+                <iframe
+                  title="ClickLab Marketing Location Map"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57187.36262429443!2d-80.17066929999999!3d26.3586885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d90e29b1cfc53d%3A0xb3518a4a584a51e6!2sBoca%20Raton%2C%20FL%2033433!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full"
+                />
               </div>
             </div>
 
