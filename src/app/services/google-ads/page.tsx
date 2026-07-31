@@ -9,6 +9,18 @@ import { Button } from '@/components/ui/Button';
 export const metadata: Metadata = {
   title: 'Google Ads Management Services | ClickLab Marketing',
   description: 'Maximize your ROI with ClickLab\'s high-intent Google Ads search campaigns and display strategies designed to capture ready-to-buy customers.',
+  openGraph: {
+    title: 'Google Ads Management Services | ClickLab Marketing',
+    description: 'Maximize your ROI with ClickLab\'s high-intent Google Ads search campaigns and display strategies designed to capture ready-to-buy customers.',
+    url: 'https://clicklabmarketing.com/services/google-ads',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Google Ads Services - ClickLab Marketing' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Google Ads Management Services | ClickLab Marketing',
+    description: 'Maximize your ROI with ClickLab\'s high-intent Google Ads search campaigns.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function GoogleAdsPage() {

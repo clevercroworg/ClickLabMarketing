@@ -11,9 +11,80 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://clicklabmarketing.com";
+
 export const metadata: Metadata = {
-  title: "Click Lab Marketing | Premium Digital Agency",
-  description: "High-end digital marketing solutions, SEO, Paid Ads, and Growth Strategies.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Click Lab Marketing | Premium Digital Agency",
+    template: "%s | Click Lab Marketing",
+  },
+  description:
+    "Data-driven digital marketing agency specializing in high-ROAS Meta & Google Ads, SEO, landing page design, and custom web development for scaling businesses.",
+  keywords: [
+    "Digital Marketing Agency",
+    "Meta Ads Agency",
+    "Facebook Ads Marketing",
+    "Google Ads Management",
+    "SEO Agency",
+    "Web Development Agency",
+    "Landing Page Design",
+    "ROAS Optimization",
+  ],
+  authors: [{ name: "Click Lab Marketing" }],
+  creator: "Click Lab Marketing",
+  publisher: "Click Lab Marketing",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  icons: {
+    icon: [
+      { url: "/logos/clicklab-icon.png", type: "image/png" },
+      { url: "/logos/clicklab-icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/logos/clicklab-icon.png", type: "image/png" }],
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    title: "Click Lab Marketing | Premium Digital Agency",
+    description:
+      "Data-driven digital marketing agency specializing in high-ROAS Meta & Google Ads, SEO, landing page design, and custom web development.",
+    siteName: "Click Lab Marketing",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Click Lab Marketing - Premium Digital Agency & Revenue Growth",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Click Lab Marketing | Premium Digital Agency",
+    description:
+      "Data-driven digital marketing agency specializing in high-ROAS Meta & Google Ads, SEO, landing page design, and web development.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
 };
 
 export default function RootLayout({
@@ -34,6 +105,28 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
+
+        {/* Structured Data / JSON-LD for Search Engines */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "Click Lab Marketing",
+              "url": siteUrl,
+              "logo": `${siteUrl}/logos/clicklab-logo.png`,
+              "image": `${siteUrl}/og-image.png`,
+              "description": "High-end digital marketing agency specializing in SEO, Meta Ads, Google Ads, Landing Page Design, and Web Development.",
+              "sameAs": [
+                "https://www.facebook.com/clicklabmarketing",
+                "https://www.instagram.com/clicklabmarketing",
+                "https://www.linkedin.com/company/clicklabmarketing"
+              ],
+              "priceRange": "$$"
+            }),
+          }}
+        />
         
         <LayoutWrapper
           navbar={<Navbar />}

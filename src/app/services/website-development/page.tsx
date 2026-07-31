@@ -9,6 +9,18 @@ import { Button } from '@/components/ui/Button';
 export const metadata: Metadata = {
   title: 'Website Development & Design Services | ClickLab Marketing',
   description: 'Custom, high-performance web development services built for conversion. We build stunning Next.js, React, and HTML5 websites.',
+  openGraph: {
+    title: 'Website Development & Design Services | ClickLab Marketing',
+    description: 'Custom, high-performance web development services built for conversion. We build stunning Next.js, React, and HTML5 websites.',
+    url: 'https://clicklabmarketing.com/services/website-development',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Website Development Services - ClickLab Marketing' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Website Development & Design Services | ClickLab Marketing',
+    description: 'Custom, high-performance web development services built for conversion.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function WebsiteDevelopmentPage() {

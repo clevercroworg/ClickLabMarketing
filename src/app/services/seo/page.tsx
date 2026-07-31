@@ -9,6 +9,18 @@ import { Button } from '@/components/ui/Button';
 export const metadata: Metadata = {
   title: 'SEO & Organic Growth Services | ClickLab Marketing',
   description: 'Dominate search engine rankings with long-term organic growth strategies, technical SEO, and high-authority link building.',
+  openGraph: {
+    title: 'SEO & Organic Growth Services | ClickLab Marketing',
+    description: 'Dominate search engine rankings with long-term organic growth strategies, technical SEO, and high-authority link building.',
+    url: 'https://clicklabmarketing.com/services/seo',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'SEO Services - ClickLab Marketing' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SEO & Organic Growth Services | ClickLab Marketing',
+    description: 'Dominate search engine rankings with long-term organic growth strategies and technical SEO.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function SEOPage() {

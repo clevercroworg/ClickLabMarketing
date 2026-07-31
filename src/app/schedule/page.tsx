@@ -5,6 +5,18 @@ import { Button } from '@/components/ui/Button';
 export const metadata: Metadata = {
   title: 'Schedule a Consultation | ClickLab Marketing',
   description: 'Book a free 30-minute strategy session with ClickLab Marketing. Let us audit your digital presence and build a custom growth roadmap.',
+  openGraph: {
+    title: 'Schedule a Consultation | ClickLab Marketing',
+    description: 'Book a free 30-minute strategy session with ClickLab Marketing. Let us audit your digital presence and build a custom growth roadmap.',
+    url: 'https://clicklabmarketing.com/schedule',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Schedule Consultation with ClickLab Marketing' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Schedule a Consultation | ClickLab Marketing',
+    description: 'Book a free 30-minute strategy session with ClickLab Marketing.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function SchedulePage() {

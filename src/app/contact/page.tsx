@@ -5,6 +5,18 @@ import ContactForm from '@/components/forms/ContactForm';
 export const metadata: Metadata = {
   title: 'Contact Us | ClickLab Marketing Agency',
   description: 'Get in touch with ClickLab Marketing. Request a free audit, ask a question, or scale your revenue with our expert digital marketing services.',
+  openGraph: {
+    title: 'Contact Us | ClickLab Marketing Agency',
+    description: 'Get in touch with ClickLab Marketing. Request a free audit, ask a question, or scale your revenue with our expert digital marketing services.',
+    url: 'https://clicklabmarketing.com/contact',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Contact ClickLab Marketing' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Us | ClickLab Marketing Agency',
+    description: 'Get in touch with ClickLab Marketing. Request a free audit or scale your business today.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function ContactPage() {

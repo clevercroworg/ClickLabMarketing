@@ -6,6 +6,18 @@ import { TestimonialsCarousel } from '@/components/sections/TestimonialsCarousel
 export const metadata: Metadata = {
   title: 'About ClickLab | Premium Digital Marketing Agency',
   description: 'Learn about ClickLab Marketing, our data-driven philosophy, and why we are obsessed with generating measurable revenue growth for our partners.',
+  openGraph: {
+    title: 'About ClickLab | Premium Digital Marketing Agency',
+    description: 'Learn about ClickLab Marketing, our data-driven philosophy, and why we are obsessed with generating measurable revenue growth for our partners.',
+    url: 'https://clicklabmarketing.com/about',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'About ClickLab Marketing' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About ClickLab | Premium Digital Marketing Agency',
+    description: 'Learn about ClickLab Marketing, our data-driven philosophy, and why we are obsessed with generating measurable revenue growth.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function AboutPage() {

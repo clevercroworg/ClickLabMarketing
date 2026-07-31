@@ -9,6 +9,18 @@ import { Button } from '@/components/ui/Button';
 export const metadata: Metadata = {
   title: 'Meta Ads Agency & Facebook Marketing | ClickLab Marketing',
   description: 'Scale your brand with precision targeting on Facebook and Instagram using visually stunning, high-converting Meta Ad creatives.',
+  openGraph: {
+    title: 'Meta Ads Agency & Facebook Marketing | ClickLab Marketing',
+    description: 'Scale your brand with precision targeting on Facebook and Instagram using visually stunning, high-converting Meta Ad creatives.',
+    url: 'https://clicklabmarketing.com/services/meta-ads',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Meta Ads Services - ClickLab Marketing' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Meta Ads Agency & Facebook Marketing | ClickLab Marketing',
+    description: 'Scale your brand with precision targeting on Facebook and Instagram using high-converting Meta Ad creatives.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function MetaAdsPage() {

@@ -8,6 +8,18 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'High-Converting Landing Page Design | ClickLab Marketing',
   description: 'Maximize your ROI with data-driven, conversion-optimized landing pages tailored for your paid ad campaigns.',
+  openGraph: {
+    title: 'High-Converting Landing Page Design | ClickLab Marketing',
+    description: 'Maximize your ROI with data-driven, conversion-optimized landing pages tailored for your paid ad campaigns.',
+    url: 'https://clicklabmarketing.com/services/landing-page-design',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Landing Page Design Services - ClickLab Marketing' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'High-Converting Landing Page Design | ClickLab Marketing',
+    description: 'Maximize your ROI with data-driven, conversion-optimized landing pages.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function LandingPageDesign() {

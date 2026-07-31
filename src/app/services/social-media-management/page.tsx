@@ -9,6 +9,18 @@ import { Button } from '@/components/ui/Button';
 export const metadata: Metadata = {
   title: 'Social Media Management Services | ClickLab Marketing',
   description: 'Build an engaged organic community with ClickLab\'s end-to-end social media management, content strategy, and brand voice development.',
+  openGraph: {
+    title: 'Social Media Management Services | ClickLab Marketing',
+    description: 'Build an engaged organic community with ClickLab\'s end-to-end social media management, content strategy, and brand voice development.',
+    url: 'https://clicklabmarketing.com/services/social-media-management',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Social Media Management Services - ClickLab Marketing' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Social Media Management Services | ClickLab Marketing',
+    description: 'Build an engaged organic community with ClickLab\'s end-to-end social media management.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function SocialMediaPage() {

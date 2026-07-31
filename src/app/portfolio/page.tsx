@@ -5,6 +5,18 @@ import { CTA } from '@/components/sections/CTA';
 export const metadata: Metadata = {
   title: 'Our Portfolio | Featured Projects by ClickLab Marketing',
   description: 'Explore our portfolio of high-performance websites and digital marketing campaigns built for revenue and scale.',
+  openGraph: {
+    title: 'Our Portfolio | Featured Projects by ClickLab Marketing',
+    description: 'Explore our portfolio of high-performance websites and digital marketing campaigns built for revenue and scale.',
+    url: 'https://clicklabmarketing.com/portfolio',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ClickLab Marketing Portfolio' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Portfolio | Featured Projects by ClickLab Marketing',
+    description: 'Explore our portfolio of high-performance websites and marketing campaigns.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function PortfolioPage() {
