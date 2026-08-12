@@ -16,8 +16,10 @@ export function LayoutWrapper({
   footer,
 }: LayoutWrapperProps) {
   const pathname = usePathname();
-  // Hide ClickLab shell for any landing page path starting with "/lp"
-  const isLp = pathname?.startsWith("/lp");
+  // Hide ClickLab shell for any standalone landing page (/lp or /rehab-digital-marketing)
+  const isLp =
+    pathname?.startsWith("/lp") ||
+    pathname?.includes("rehab-digital-marketing");
 
   if (isLp) {
     return <>{children}</>;
