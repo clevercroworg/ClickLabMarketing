@@ -78,7 +78,7 @@ export function Footer() {
                 </div>
               </li>
             </ul>
-            <Link href="/schedule">
+            <Link href="/contact">
               <Button className="w-full mt-8 bg-white text-gray-900 hover:bg-gray-100 font-bold h-14 rounded-xl">
                 Schedule Consultation
               </Button>
