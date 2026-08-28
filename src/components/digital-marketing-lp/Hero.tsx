@@ -111,15 +111,9 @@ export function Hero({ onOpenAudit }: HeroProps) {
           
           {/* Left Column: Clear Value Proposition */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
-            
-            {/* Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 text-cyan-300 font-bold text-xs md:text-sm tracking-wider uppercase mb-6 border border-blue-400/25 shadow-[0_4px_24px_rgba(37,99,235,0.2)] backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-              <span>Performance Growth Agency</span>
-            </div>
 
             {/* Guaranteed 2-Line Desktop Heading with Perfect Rhythm */}
-            <h1 className="text-3xl sm:text-4xl lg:text-[2.85rem] xl:text-[3.4rem] 2xl:text-[3.75rem] font-black text-white tracking-tight leading-[1.12] mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-[2.85rem] xl:text-[3.4rem] 2xl:text-[3.75rem] font-black text-white tracking-tight leading-[1.12] mb-5">
               <span className="block">Turn Digital Marketing</span>
               <span className="block mt-1">
                 Into{" "}
@@ -129,9 +123,14 @@ export function Hero({ onOpenAudit }: HeroProps) {
               </span>
             </h1>
 
-            {/* Subheading */}
-            <p className="text-base sm:text-lg lg:text-xl text-slate-300 font-normal leading-relaxed mb-8 max-w-2xl">
-              We combine Google Ads, Meta Ads, conversion-focused creative, and CRO to turn marketing spend into measurable customer and revenue growth.
+            {/* Subheading - Increased by 2px with 2 clean lines on mobile */}
+            <p className="text-[18px] sm:text-[20px] lg:text-[22px] text-slate-300 font-normal leading-[1.4] sm:leading-relaxed mb-8 max-w-2xl">
+              <span className="hidden sm:inline">
+                We combine Google Ads, Meta Ads, conversion-focused creative, and CRO to turn marketing spend into measurable customer and revenue growth.
+              </span>
+              <span className="sm:hidden">
+                We combine Google &amp; Meta Ads, creative, and CRO to turn ad spend into scalable revenue growth.
+              </span>
             </p>
 
             {/* Action Buttons */}
@@ -152,26 +151,34 @@ export function Hero({ onOpenAudit }: HeroProps) {
               </a>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm font-semibold text-slate-300">
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-cyan-400 shrink-0 stroke-[2.5]" />
+            {/* Highly Visual Trust Indicators */}
+            <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 sm:gap-4 text-xs sm:text-sm font-bold text-slate-200">
+              <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/[0.06] border border-cyan-400/25 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+                <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-500 flex items-center justify-center shadow-[0_0_10px_rgba(6,182,212,0.5)] shrink-0">
+                  <Check className="w-3 h-3 text-white stroke-[3.5]" />
+                </div>
                 <span>You Own Your Ad Accounts</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-cyan-400 shrink-0 stroke-[2.5]" />
+
+              <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/[0.06] border border-cyan-400/25 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+                <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-500 flex items-center justify-center shadow-[0_0_10px_rgba(6,182,212,0.5)] shrink-0">
+                  <Check className="w-3 h-3 text-white stroke-[3.5]" />
+                </div>
                 <span>No Long-Term Lock-Ins</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-cyan-400 shrink-0 stroke-[2.5]" />
+
+              <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/[0.06] border border-cyan-400/25 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
+                <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-500 flex items-center justify-center shadow-[0_0_10px_rgba(6,182,212,0.5)] shrink-0">
+                  <Check className="w-3 h-3 text-white stroke-[3.5]" />
+                </div>
                 <span>Transparent Live Reporting</span>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Redesigned Growth Performance Outcome Card */}
-          <div className="lg:col-span-5 relative w-full">
+          {/* Right Column: Redesigned Growth Performance Outcome Card (Hidden on mobile, visible on lg/desktop) */}
+          <div className="hidden lg:block lg:col-span-5 relative w-full">
             
             {/* Ambient Background Aura */}
             <div className="absolute -inset-2 bg-gradient-to-tr from-blue-600/25 via-cyan-500/20 to-transparent rounded-[2.5rem] blur-2xl pointer-events-none" />
