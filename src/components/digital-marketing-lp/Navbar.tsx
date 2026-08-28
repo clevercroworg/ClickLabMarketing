@@ -46,16 +46,16 @@ export function Navbar({ onOpenAudit }: NavbarProps) {
               transition={{ duration: 0.25 }}
               className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-white"
             >
-              <div className="container mx-auto px-4 py-2 flex justify-between items-center text-xs font-semibold tracking-wide">
-                <div className="flex items-center gap-4">
-                  <span className="text-blue-100">Scale your revenue with ClickLab.</span>
+              <div className="container mx-auto px-4 py-1.5 flex justify-between items-center text-[11px] sm:text-xs font-semibold tracking-wide whitespace-nowrap">
+                <div className="flex items-center gap-2 truncate">
+                  <span className="text-blue-100 truncate">Scale your revenue with ClickLab.</span>
                 </div>
-                <div className="flex items-center gap-6">
-                  <a href="tel:2164088962" className="hidden sm:inline-flex items-center gap-1.5 hover:text-blue-200 transition-colors">
+                <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+                  <a href="tel:2164088962" className="inline-flex items-center gap-1.5 hover:text-blue-200 transition-colors">
                     <Phone className="w-3 h-3 text-cyan-300" />
                     <span>(216) 408-8962</span>
                   </a>
-                  <a href="mailto:contact@clicklabmarketing.com" className="hover:text-blue-200 transition-colors">
+                  <a href="mailto:contact@clicklabmarketing.com" className="hidden sm:inline-block hover:text-blue-200 transition-colors">
                     contact@clicklabmarketing.com
                   </a>
                 </div>

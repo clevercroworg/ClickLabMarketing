@@ -1,93 +1,63 @@
 "use client";
 
-import { Phone, Calendar, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Phone, ArrowRight, Sparkles } from "lucide-react";
 
 interface CallCTABannerProps {
   headline?: string;
-  subtext?: string;
   onOpenAudit: () => void;
 }
 
 export function CallCTABanner({
   headline = "Ready to Scale Your Customer Acquisition?",
-  subtext = "Speak directly with a senior performance marketing strategist to identify quick wins.",
   onOpenAudit,
 }: CallCTABannerProps) {
   return (
-    <section className="py-12 sm:py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-[#0a192f] to-[#020617] text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-blue-900/40">
+    <section className="py-16 sm:py-24 bg-white text-slate-900 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Sleek Modern Gradient CTA Container */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-slate-950 text-white rounded-3xl p-8 sm:p-14 md:p-16 shadow-2xl border border-blue-800/40 text-center">
           
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            {/* Left Side: Contact Details */}
-            <div className="lg:col-span-7 flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left gap-5">
-              <a
-                href="tel:2164088962"
-                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-600/30 hover:bg-blue-600/50 border border-blue-400/30 text-cyan-300 flex items-center justify-center shrink-0 transition-all active:scale-95 group mx-auto sm:mx-0"
-              >
-                <Phone className="w-6 h-6 fill-current group-hover:rotate-12 transition-transform" />
-              </a>
+          {/* Ambient Glows */}
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
 
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 block mb-1">
-                  Direct Growth Line
-                </span>
-                <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug">
-                  {headline}
-                </h3>
-                <a
-                  href="tel:2164088962"
-                  className="text-xl sm:text-2xl font-black text-cyan-300 hover:text-cyan-200 transition-colors tracking-tight block mt-1"
-                >
-                  (216) 408-8962
-                </a>
-              </div>
+          <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+            
+            {/* Top Accent Pill */}
+            <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 rounded-full px-4 py-1.5 text-xs font-black text-cyan-300 uppercase tracking-widest mb-6">
+              <Sparkles className="w-3.5 h-3.5 text-cyan-300" />
+              <span>Let&apos;s Build Your Growth Engine</span>
             </div>
 
-            {/* Middle Divider (Desktop) */}
-            <div className="hidden lg:block lg:col-span-1 border-l border-slate-800 h-16 mx-auto" />
+            {/* Headline */}
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-8">
+              {headline}
+            </h2>
 
-            {/* Right Side: Free Audit Button */}
-            <div className="lg:col-span-4 flex flex-col items-center lg:items-end justify-center">
+            {/* Responsive Action Buttons Row */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
               <button
                 onClick={onOpenAudit}
-                className="btn-shimmer w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-4 rounded-xl shadow-lg shadow-blue-600/30 active:scale-98 transition-all cursor-pointer whitespace-nowrap"
+                className="btn-shimmer w-full sm:w-auto inline-flex items-center justify-center gap-2.5 h-14 px-9 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-cyan-500/20 active:scale-98 transition-all cursor-pointer whitespace-nowrap"
               >
-                <Calendar className="w-4 h-4 text-cyan-200 shrink-0" />
                 <span>Claim Free Growth Audit</span>
-                <ArrowRight className="w-4 h-4 shrink-0" />
+                <ArrowRight className="w-4 h-4" />
               </button>
-            </div>
 
-          </div>
-
-          {/* Sub-footer strip */}
-          <div className="mt-8 pt-5 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 font-medium text-center sm:text-left">
-            <div className="flex items-center gap-2 justify-center">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Direct outreach within 2 business hours</span>
-            </div>
-            <div className="flex items-center gap-4 sm:gap-6 justify-center">
               <a
-                href="https://clicklabmarketing.com"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-cyan-400 transition-colors"
+                href="tel:2164088962"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 h-14 px-8 rounded-2xl border-2 border-white/20 bg-white/[0.06] hover:bg-white/15 text-white font-bold text-xs sm:text-sm uppercase tracking-wider active:scale-98 transition-all whitespace-nowrap"
               >
-                clicklabmarketing.com
-              </a>
-              <span>|</span>
-              <a
-                href="mailto:contact@clicklabmarketing.com"
-                className="hover:text-cyan-400 transition-colors truncate"
-              >
-                contact@clicklabmarketing.com
+                <Phone className="w-4 h-4 text-cyan-300" />
+                <span>(216) 408-8962</span>
               </a>
             </div>
+
           </div>
 
         </div>
+
       </div>
     </section>
   );

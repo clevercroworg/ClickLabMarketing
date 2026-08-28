@@ -55,10 +55,10 @@ export function Hero({ onOpenAudit }: HeroProps) {
           {/* Left Column: Direct-Response Growth Value Proposition */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
 
-            {/* Sleek Line Accent (No badge / No blinking dot) */}
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-0.5 w-10 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
-              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-cyan-400">
+            {/* Sleek Line Accent - Single Line on Mobile */}
+            <div className="flex items-center gap-2.5 mb-5 sm:mb-6">
+              <div className="h-[2px] w-6 sm:w-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full shrink-0" />
+              <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-cyan-400 whitespace-nowrap">
                 Google Ads • Meta Ads • Performance Funnels
               </span>
             </div>
