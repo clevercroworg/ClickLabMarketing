@@ -116,80 +116,15 @@ export function GrowthPillars({ onOpenAudit }: GrowthPillarsProps) {
           })}
         </div>
 
-        {/* Dual Visual Production Showcases */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-16">
-          
-          {/* Card 1: Dedicated PPC Strategy & Media Buying */}
-          <div className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-blue-900/50 p-6 sm:p-8 flex flex-col justify-between text-white">
-            <div>
-              <div className="inline-flex items-center gap-1.5 bg-blue-500/20 text-cyan-300 border border-blue-400/30 px-3 py-1 rounded-full text-xs font-bold mb-4">
-                <BarChart3 className="w-3.5 h-3.5 text-cyan-400" /> Dedicated Growth Strategy
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">
-                PPC &amp; Media Buying Desk
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mb-6">
-                Direct access to senior media buyers who proactively optimize bids, search query reports, and budget allocations to maximize your monthly ROAS.
-              </p>
-            </div>
-
-            <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-lg border border-white/10">
-              <Image
-                src="/images/growth_marketing_studio.jpg"
-                alt="ClickLab Senior Performance Growth Marketing Strategists"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-3 right-3 bg-slate-950/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 text-xs text-slate-200 font-bold flex items-center justify-between">
-                <span>Real-Time Campaign Optimization Desk</span>
-                <span className="text-emerald-400">Active Scaling</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: Performance Creative Studio */}
-          <div className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-blue-900/50 p-6 sm:p-8 flex flex-col justify-between text-white">
-            <div>
-              <div className="inline-flex items-center gap-1.5 bg-blue-500/20 text-cyan-300 border border-blue-400/30 px-3 py-1 rounded-full text-xs font-bold mb-4">
-                <Video className="w-3.5 h-3.5 text-cyan-400" /> In-House Creative Lab
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">
-                Performance Ad Creatives
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mb-6">
-                Our in-house creative lab produces scroll-stopping video hooks, high-CTR carousels, and conversion-engineered ad creatives designed to scale profitably.
-              </p>
-            </div>
-
-            <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden shadow-lg border border-white/10">
-              <Image
-                src="/images/performance_creative_lab.jpg"
-                alt="ClickLab Creative Production and Video Testing Studio"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-3 right-3 bg-slate-950/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 text-xs text-slate-200 font-bold flex items-center justify-between">
-                <span>In-House Creative &amp; Video Suite</span>
-                <span className="text-cyan-300">Continuous Testing</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
         {/* Action Trigger Bar */}
-        <div className="bg-gradient-to-r from-blue-950 via-blue-900 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-blue-800/40 text-center sm:text-left">
+        <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-blue-700/40 text-center sm:text-left">
           <h4 className="text-xl sm:text-2xl font-black text-white">
             Want to see how your campaigns compare to top performers?
           </h4>
 
           <button
             onClick={onOpenAudit}
-            className="btn-shimmer w-full sm:w-auto bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-2xl shrink-0 transition-all shadow-xl shadow-blue-600/30 active:scale-98 cursor-pointer flex items-center justify-center gap-2 group whitespace-nowrap"
+            className="btn-shimmer w-full sm:w-auto bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-2xl shrink-0 transition-all shadow-xl shadow-cyan-500/20 active:scale-98 cursor-pointer flex items-center justify-center gap-2 group whitespace-nowrap"
           >
             <span>Request Free Growth Audit</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
