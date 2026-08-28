@@ -69,14 +69,14 @@ export function GuaranteeBanner({ onOpenAudit }: GuaranteeBannerProps) {
 
           {/* Action Row */}
           <div className="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <span className="text-xs sm:text-sm text-slate-300 font-medium">
-              Ready to see what an elite growth marketing team can do for your business?
+            <span className="text-base sm:text-lg font-bold text-white">
+              Ready to scale with a trusted growth partner?
             </span>
             <button
               onClick={onOpenAudit}
               className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider px-7 py-4 rounded-xl shadow-xl transition-all cursor-pointer shrink-0 active:scale-98"
             >
-              <span>Claim Free 2026 Audit</span>
+              <span>Claim Free Growth Audit</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

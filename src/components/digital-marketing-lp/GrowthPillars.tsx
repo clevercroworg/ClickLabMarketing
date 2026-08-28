@@ -167,14 +167,9 @@ export function GrowthPillars({ onOpenAudit }: GrowthPillarsProps) {
 
         {/* Action Trigger Bar */}
         <div className="bg-gradient-to-r from-blue-950 via-blue-900 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6 border border-blue-800/40 text-center sm:text-left">
-          <div>
-            <h4 className="text-xl sm:text-2xl font-black text-white mb-1">
-              Want to see how your campaigns compare to top performers?
-            </h4>
-            <p className="text-xs sm:text-sm text-slate-300">
-              We&apos;ll audit your ads, landing pages, and tracking setup with zero obligation.
-            </p>
-          </div>
+          <h4 className="text-xl sm:text-2xl font-black text-white">
+            Want to see how your campaigns compare to top performers?
+          </h4>
 
           <button
             onClick={onOpenAudit}

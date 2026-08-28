@@ -38,34 +38,26 @@ export function CallCTABanner({
                 </h3>
                 <a
                   href="tel:2164088962"
-                  className="text-xl sm:text-2xl font-black text-cyan-300 hover:text-cyan-200 transition-colors tracking-tight block mt-0.5"
+                  className="text-xl sm:text-2xl font-black text-cyan-300 hover:text-cyan-200 transition-colors tracking-tight block mt-1"
                 >
                   (216) 408-8962
                 </a>
-                <p className="text-xs sm:text-sm text-slate-300 font-normal mt-1">
-                  {subtext}
-                </p>
               </div>
             </div>
 
             {/* Middle Divider (Desktop) */}
-            <div className="hidden lg:block lg:col-span-1 border-l border-slate-800 h-20 mx-auto" />
+            <div className="hidden lg:block lg:col-span-1 border-l border-slate-800 h-16 mx-auto" />
 
             {/* Right Side: Free Audit Button */}
             <div className="lg:col-span-4 flex flex-col items-center lg:items-end justify-center">
-              <div className="w-full flex flex-col items-center lg:items-end">
-                <button
-                  onClick={onOpenAudit}
-                  className="btn-shimmer w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-7 py-4 rounded-xl shadow-lg shadow-blue-600/30 active:scale-98 transition-all cursor-pointer whitespace-nowrap"
-                >
-                  <Calendar className="w-4 h-4 text-cyan-200 shrink-0" />
-                  <span>Claim Free Growth Audit</span>
-                  <ArrowRight className="w-4 h-4 shrink-0" />
-                </button>
-                <p className="text-[11px] text-slate-400 text-center lg:text-right mt-2 font-medium">
-                  30-min strategic consultation • Zero obligation
-                </p>
-              </div>
+              <button
+                onClick={onOpenAudit}
+                className="btn-shimmer w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-4 rounded-xl shadow-lg shadow-blue-600/30 active:scale-98 transition-all cursor-pointer whitespace-nowrap"
+              >
+                <Calendar className="w-4 h-4 text-cyan-200 shrink-0" />
+                <span>Claim Free Growth Audit</span>
+                <ArrowRight className="w-4 h-4 shrink-0" />
+              </button>
             </div>
 
           </div>
