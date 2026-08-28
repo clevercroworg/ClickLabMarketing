@@ -80,7 +80,7 @@ export function Hero({ onOpenAudit }: HeroProps) {
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-8">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
               <button
                 onClick={onOpenAudit}
                 className="btn-shimmer inline-flex items-center justify-center gap-2.5 h-14 px-8 sm:px-9 text-base rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold shadow-xl shadow-blue-600/30 active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap"
@@ -95,30 +95,6 @@ export function Hero({ onOpenAudit }: HeroProps) {
               >
                 <span>View Our Services</span>
               </a>
-            </div>
-
-            {/* Highly Visual Trust Indicators */}
-            <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 sm:gap-4 text-xs sm:text-sm font-bold text-slate-200">
-              <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/[0.06] border border-cyan-400/25 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
-                <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-500 flex items-center justify-center shadow-[0_0_10px_rgba(6,182,212,0.5)] shrink-0">
-                  <Check className="w-3 h-3 text-white stroke-[3.5]" />
-                </div>
-                <span>You Own Your Ad Accounts</span>
-              </div>
-
-              <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/[0.06] border border-cyan-400/25 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
-                <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-500 flex items-center justify-center shadow-[0_0_10px_rgba(6,182,212,0.5)] shrink-0">
-                  <Check className="w-3 h-3 text-white stroke-[3.5]" />
-                </div>
-                <span>No Long-Term Lock-Ins</span>
-              </div>
-
-              <div className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-white/[0.06] border border-cyan-400/25 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.3)]">
-                <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-500 flex items-center justify-center shadow-[0_0_10px_rgba(6,182,212,0.5)] shrink-0">
-                  <Check className="w-3 h-3 text-white stroke-[3.5]" />
-                </div>
-                <span>Transparent Live Reporting</span>
-              </div>
             </div>
 
           </div>

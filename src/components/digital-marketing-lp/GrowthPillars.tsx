@@ -14,8 +14,9 @@ export function GrowthPillars({ onOpenAudit }: GrowthPillarsProps) {
       subtitle: "High-Intent Search & Shopping",
       description: "We build granular Single-Theme Ad Groups (STAGs), rigorous negative keyword lists, and value-based bidding strategies to capture ready-to-buy customers at the lowest CPA.",
       deliverables: ["Search & Shopping Campaigns", "Negative Keyword Sculpting", "Competitor Ad Interception", "Server-Side Conversion Tracking"],
+      logoSrc: "/logos/google-ads.svg",
       icon: Search,
-      badge: "Google Premier Partner Strategy",
+      badge: "Google Ads Specialist",
       badgeColor: "bg-blue-100 text-blue-800 border-blue-200",
     },
     {
@@ -23,8 +24,9 @@ export function GrowthPillars({ onOpenAudit }: GrowthPillarsProps) {
       subtitle: "Facebook, Instagram & LinkedIn",
       description: "We scale acquisition through rapid creative testing, custom audience modeling, and full-funnel retargeting to maximize blended ROAS across all stages of awareness.",
       deliverables: ["Creative Hook & Angle Testing", "Broad & Lookalike Audience Scaling", "CAPI Server-Side Attribution", "Dynamic Catalog Retargeting"],
+      logoSrc: "/logos/meta.svg",
       icon: Share2,
-      badge: "Scale Without Audience Fatigue",
+      badge: "Meta Scaling Systems",
       badgeColor: "bg-cyan-100 text-cyan-800 border-cyan-200",
     },
     {
@@ -41,6 +43,7 @@ export function GrowthPillars({ onOpenAudit }: GrowthPillarsProps) {
       subtitle: "Turning Clicks into Revenue",
       description: "Stop wasting ad traffic on slow, generic websites. We design dedicated, sub-second landing pages with direct-response copywriting engineered to double your conversion rate.",
       deliverables: ["Sub-Second Next.js Landing Pages", "Direct-Response Conversion Copy", "A/B Multivariate Testing", "Mobile-First UX Optimization"],
+      logoSrc: "/logos/landing-page.svg",
       icon: Layout,
       badge: "2x Industry Avg Conversion Rate",
       badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
@@ -79,8 +82,14 @@ export function GrowthPillars({ onOpenAudit }: GrowthPillarsProps) {
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-13 h-13 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-                      <Icon className="w-6 h-6" />
+                    <div className="w-14 h-14 rounded-2xl bg-white border border-slate-200 p-2.5 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+                      {item.logoSrc ? (
+                        <Image src={item.logoSrc} alt={item.title} width={36} height={36} className="w-8 h-8 object-contain" />
+                      ) : (
+                        <div className="w-full h-full rounded-xl bg-blue-600 text-white flex items-center justify-center">
+                          <Icon className="w-6 h-6" />
+                        </div>
+                      )}
                     </div>
                     <span className={`text-[11px] font-extrabold px-3 py-1 rounded-full border ${item.badgeColor}`}>
                       {item.badge}
