@@ -54,21 +54,18 @@ export function GrowthPillars({ onOpenAudit }: GrowthPillarsProps) {
     <section id="services" className="py-16 sm:py-24 bg-white text-slate-900 relative overflow-hidden border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 text-xs font-bold text-blue-700 uppercase tracking-widest mb-4">
+        {/* Section Header - Clean Typography & No Subtext */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 text-xs font-black text-blue-700 uppercase tracking-widest mb-4">
             <Target className="w-3.5 h-3.5 text-blue-600" />
-            <span>Full-Funnel Growth Capabilities</span>
+            <span>Growth Capabilities</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-4">
-            PPC Management, Paid Social &amp; <br />
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+            Paid Ads, PPC &amp;{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
               High-Converting Funnels
             </span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 font-normal max-w-2xl mx-auto leading-relaxed">
-            We eliminate wasted ad spend and scale qualified customer acquisition with full-funnel digital marketing.
-          </p>
         </div>
 
         {/* 4 Core Pillars Grid */}
