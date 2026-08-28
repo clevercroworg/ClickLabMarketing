@@ -55,10 +55,12 @@ export function Hero({ onOpenAudit }: HeroProps) {
           {/* Left Column: Direct-Response Growth Value Proposition */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
 
-            {/* Platform Tag Strip */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-cyan-400/25 text-cyan-300 font-bold text-xs sm:text-sm tracking-wide mb-6 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.2)]">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
-              <span>Google Ads • Meta Ads • Performance Funnels</span>
+            {/* Sleek Line Accent (No badge / No blinking dot) */}
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-0.5 w-10 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
+              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-cyan-400">
+                Google Ads • Meta Ads • Performance Funnels
+              </span>
             </div>
 
             {/* High-Impact 2-Line Heading */}
