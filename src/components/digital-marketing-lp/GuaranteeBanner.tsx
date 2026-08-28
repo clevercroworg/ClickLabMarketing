@@ -36,12 +36,9 @@ export function GuaranteeBanner({ onOpenAudit }: GuaranteeBannerProps) {
             <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 rounded-full px-4 py-1.5 text-xs font-black text-cyan-300 uppercase tracking-widest mb-4">
               <ShieldCheck className="w-3.5 h-3.5 text-cyan-300" /> Risk-Free Partnership
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
               Our 3 Ironclad Agency Commitments
             </h2>
-            <p className="text-sm sm:text-base text-slate-300 font-normal max-w-xl mx-auto">
-              We built ClickLab to be the antidote to untrustworthy, low-performing legacy agencies.
-            </p>
           </div>
 
           {/* 3 Columns */}
