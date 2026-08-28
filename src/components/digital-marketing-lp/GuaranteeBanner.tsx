@@ -11,17 +11,14 @@ export function GuaranteeBanner({ onOpenAudit }: GuaranteeBannerProps) {
     {
       icon: ShieldCheck,
       title: "100% Asset & Account Ownership",
-      description: "You retain full administrative ownership of your Google Ads, Meta Business Managers, pixel tracking data, and custom landing page code at all times.",
     },
     {
       icon: Lock,
-      title: "Zero Long-Term Lock-In Contracts",
-      description: "We don't trap you in rigid 12-month retainers. We earn your ongoing partnership every single month by consistently delivering positive ROI and measurable scale.",
+      title: "Zero Long-Term Lock-Ins",
     },
     {
       icon: LineChart,
       title: "Real-Time Transparent Reporting",
-      description: "No confusing PDF summaries at month-end. You receive access to a 24/7 live analytics dashboard tracking exact ad spend, CPA, and closed pipeline revenue.",
     },
   ];
 
@@ -41,24 +38,19 @@ export function GuaranteeBanner({ onOpenAudit }: GuaranteeBannerProps) {
             </h2>
           </div>
 
-          {/* 3 Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+          {/* 3 Minimal Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-10">
             {commitments.map((c) => {
               const Icon = c.icon;
               return (
                 <div
                   key={c.title}
-                  className="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-6 flex flex-col justify-between"
+                  className="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-6 sm:p-8 flex items-center gap-4 hover:border-cyan-400/40 hover:bg-slate-800/80 transition-all duration-300 shadow-lg"
                 >
-                  <div>
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/20 text-cyan-400 flex items-center justify-center mb-4">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <h3 className="text-lg font-black text-white mb-2">{c.title}</h3>
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                      {c.description}
-                    </p>
+                  <div className="w-13 h-13 rounded-2xl bg-blue-500/20 text-cyan-400 flex items-center justify-center shrink-0 shadow-inner">
+                    <Icon className="w-6 h-6" />
                   </div>
+                  <h3 className="text-lg sm:text-xl font-black text-white leading-snug">{c.title}</h3>
                 </div>
               );
             })}
