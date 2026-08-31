@@ -18,12 +18,12 @@ const FloatingBgTool = ({
   delay?: number;
 }) => (
   <div
-    className={`absolute pointer-events-none z-10 hidden md:flex items-center justify-center opacity-25 sm:opacity-30 hover:opacity-45 transition-opacity duration-300 ${className}`}
+    className={`absolute pointer-events-none z-10 flex items-center justify-center opacity-30 sm:opacity-35 hover:opacity-50 transition-opacity duration-300 ${className}`}
     style={{
       animation: `heroFloat 6s ease-in-out infinite ${delay}s`,
     }}
   >
-    <div className="w-11 h-11 lg:w-13 lg:h-13 rounded-2xl bg-white/85 border border-slate-200/90 shadow-md backdrop-blur-xs flex items-center justify-center p-2.5">
+    <div className="w-9 h-9 sm:w-11 sm:h-11 lg:w-13 lg:h-13 rounded-xl sm:rounded-2xl bg-white/90 border border-slate-200/90 shadow-md backdrop-blur-xs flex items-center justify-center p-2 sm:p-2.5">
       {children}
     </div>
   </div>
@@ -80,9 +80,9 @@ export function Hero({ onOpenAudit }: HeroProps) {
           }}
         />
 
-        {/* ========== FLOATING SOCIAL & MARKETING TOOL ICONS (LOW OPACITY) ========== */}
+        {/* ========== FLOATING SOCIAL & MARKETING TOOL ICONS (VISIBLE ON MOBILE & DESKTOP) ========== */}
         {/* Google Ads (Top Left) */}
-        <FloatingBgTool className="left-[3%] lg:left-[4%] top-[18%]" delay={0}>
+        <FloatingBgTool className="left-[2%] sm:left-[4%] top-[12%] sm:top-[16%]" delay={0}>
           <svg viewBox="0 0 24 24" className="w-full h-full">
             <path fill="#4285F4" d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7.43 3.72L12 11.62 4.57 7.9 12 4.18z" />
             <path fill="#34A853" d="M4 8.82l7 3.5v7.36l-7-3.5V8.82z" />
@@ -91,35 +91,35 @@ export function Hero({ onOpenAudit }: HeroProps) {
         </FloatingBgTool>
 
         {/* Meta / Instagram (Top Right) */}
-        <FloatingBgTool className="right-[4%] lg:right-[5%] top-[16%]" delay={1.5}>
+        <FloatingBgTool className="right-[2%] sm:right-[5%] top-[10%] sm:top-[14%]" delay={1.5}>
           <svg viewBox="0 0 24 24" className="w-full h-full fill-[#0081FB]">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
           </svg>
         </FloatingBgTool>
 
         {/* TikTok (Center Left) */}
-        <FloatingBgTool className="left-[2%] lg:left-[3%] top-[52%]" delay={2.5}>
+        <FloatingBgTool className="left-[1%] sm:left-[3%] top-[48%] sm:top-[52%]" delay={2.5}>
           <svg viewBox="0 0 24 24" className="w-full h-full fill-[#000000]">
             <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.5 6.34 6.34 0 0 0 1.95-4.5V8.64a8.28 8.28 0 0 0 4.82 1.5V6.69z"/>
           </svg>
         </FloatingBgTool>
 
         {/* LinkedIn (Center Right) */}
-        <FloatingBgTool className="right-[2%] lg:right-[3%] top-[48%]" delay={3}>
+        <FloatingBgTool className="right-[1%] sm:right-[3%] top-[42%] sm:top-[48%]" delay={3}>
           <svg viewBox="0 0 24 24" className="w-full h-full fill-[#0A66C2]">
             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.603 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
           </svg>
         </FloatingBgTool>
 
         {/* Google Analytics 4 (Bottom Right) */}
-        <FloatingBgTool className="right-[5%] lg:right-[6%] bottom-[12%]" delay={4}>
+        <FloatingBgTool className="right-[3%] sm:right-[6%] bottom-[4%] sm:bottom-[10%]" delay={4}>
           <svg viewBox="0 0 24 24" className="w-full h-full fill-[#F9AB00]">
             <path d="M12 22h10V2H2v20h10zm-8-2V4h16v16H4zm6-12h-2v10h2V8zm4 4h-2v6h2v-6zm4-7h-2v13h2V5z" />
           </svg>
         </FloatingBgTool>
 
         {/* Shopify / E-Comm (Bottom Left) */}
-        <FloatingBgTool className="left-[4%] lg:left-[5%] bottom-[12%]" delay={2}>
+        <FloatingBgTool className="left-[3%] sm:left-[5%] bottom-[4%] sm:bottom-[10%]" delay={2}>
           <svg viewBox="0 0 24 24" className="w-full h-full fill-[#95BF47]">
             <path d="M19.8 6.4c-.1-.4-.4-.6-.8-.6h-3.5L14 3.7c-.4-.5-1-.8-1.7-.8s-1.3.3-1.7.8L9.1 5.8H5.6c-.4 0-.7.2-.8.6L2 19.3c-.1.5.2 1 .7 1.1.1 0 .2 0 .3 0h18c.5 0 1-.4 1-1 0-.1 0-.2 0-.3L19.8 6.4zM12 4.7c.3 0 .6.2.8.4l1.1 1.6H10.1l1.1-1.6c.2-.2.5-.4.8-.4zm-2.4 3.8c.4 0 .8.3.8.8v2.4c0 .4-.3.8-.8.8s-.8-.3-.8-.8V9.3c0-.5.4-.8.8-.8zm4.8 0c.4 0 .8.3.8.8v2.4c0 .4-.3.8-.8.8s-.8-.3-.8-.8V9.3c0-.5.4-.8.8-.8z" />
           </svg>
