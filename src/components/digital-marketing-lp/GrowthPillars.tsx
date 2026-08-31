@@ -10,8 +10,8 @@ interface GrowthPillarsProps {
 export function GrowthPillars({ onOpenAudit }: GrowthPillarsProps) {
   const capabilities = [
     {
-      title: "Google Ads & PPC Management",
-      subtitle: "High-Intent Search & Shopping",
+      title: "Google Ads",
+      subtitle: "Search, Shopping & Performance Max",
       description: "We build granular Single-Theme Ad Groups (STAGs), rigorous negative keyword lists, and value-based bidding strategies to capture ready-to-buy customers at the lowest CPA.",
       deliverables: ["Search & Shopping Campaigns", "Negative Keyword Sculpting", "Competitor Ad Interception", "Server-Side Conversion Tracking"],
       logoSrc: "/logos/google-ads.svg",
@@ -20,8 +20,8 @@ export function GrowthPillars({ onOpenAudit }: GrowthPillarsProps) {
       badgeColor: "bg-blue-100 text-blue-800 border-blue-200",
     },
     {
-      title: "Meta Ads & Paid Social",
-      subtitle: "Facebook, Instagram & LinkedIn",
+      title: "Meta Ads",
+      subtitle: "Facebook & Instagram Scaling",
       description: "We scale acquisition through rapid creative testing, custom audience modeling, and full-funnel retargeting to maximize blended ROAS across all stages of awareness.",
       deliverables: ["Creative Hook & Angle Testing", "Broad & Lookalike Audience Scaling", "CAPI Server-Side Attribution", "Dynamic Catalog Retargeting"],
       logoSrc: "/logos/meta.svg",
@@ -30,8 +30,8 @@ export function GrowthPillars({ onOpenAudit }: GrowthPillarsProps) {
       badgeColor: "bg-cyan-100 text-cyan-800 border-cyan-200",
     },
     {
-      title: "Performance Creative Studio",
-      subtitle: "Scroll-Stopping Visual Assets",
+      title: "Performance Creative",
+      subtitle: "High-CTR Video & Static Ads",
       description: "Creative is your highest-leverage growth variable. Our studio delivers direct-response video ads, high-CTR product carousels, and visual hooks tested weekly.",
       deliverables: ["Direct-Response Video Hooks", "High-CTR Static & Carousel Ads", "Weekly Creative Refresh Cycles", "Competitor Teardown Analysis"],
       icon: Video,
@@ -39,13 +39,13 @@ export function GrowthPillars({ onOpenAudit }: GrowthPillarsProps) {
       badgeColor: "bg-purple-100 text-purple-800 border-purple-200",
     },
     {
-      title: "Conversion Landing Pages (CRO)",
+      title: "Landing Pages & CRO",
       subtitle: "Turning Clicks into Revenue",
       description: "Stop wasting ad traffic on slow, generic websites. We design dedicated, sub-second landing pages with direct-response copywriting engineered to double your conversion rate.",
       deliverables: ["Sub-Second Next.js Landing Pages", "Direct-Response Conversion Copy", "A/B Multivariate Testing", "Mobile-First UX Optimization"],
       logoSrc: "/logos/landing-page.svg",
       icon: Layout,
-      badge: "2x Industry Avg Conversion Rate",
+      badge: "2x Avg Conversion Rate",
       badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-200",
     },
   ];
@@ -61,7 +61,7 @@ export function GrowthPillars({ onOpenAudit }: GrowthPillarsProps) {
             <span>Growth Capabilities</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-            Paid Ads, PPC &amp;{" "}
+            Google Ads, Meta Ads &amp;{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
               High-Converting Funnels
             </span>
