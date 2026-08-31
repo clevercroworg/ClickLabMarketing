@@ -4,229 +4,126 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronDown, Menu, X, Phone } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Phone, Calendar, ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
 
 interface NavbarProps {
   onOpenAudit: () => void;
 }
 
-const servicesMenu = [
-  { name: "Google Ads", href: "/services/google-ads", description: "Search & display campaigns" },
-  { name: "Meta Ads", href: "/services/meta-ads", description: "Precision targeting on Meta" },
-  { name: "SEO & Content", href: "/services/seo", description: "Dominate search rankings" },
-  { name: "Landing Page Design", href: "/services/landing-page-design", description: "High-converting CRO funnels" },
-  { name: "Social Media Management", href: "/services/social-media-management", description: "Engaged community growth" },
-  { name: "Website Development", href: "/services/website-development", description: "High-performance web apps" },
-];
-
 export function Navbar({ onOpenAudit }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 15);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <>
-      <header className="fixed w-full z-50 transition-all duration-300">
-        
-        {/* Top Bar Strip - Collapses smoothly on scroll */}
-        <AnimatePresence>
-          {!isScrolled && (
-            <motion.div
-              initial={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-white"
-            >
-              <div className="container mx-auto px-4 py-1.5 flex justify-between items-center text-[11px] sm:text-xs font-semibold tracking-wide whitespace-nowrap">
-                <div className="flex items-center gap-2 truncate">
-                  <span className="text-blue-100 truncate">Scale your revenue with ClickLab.</span>
-                </div>
-                <div className="flex items-center gap-4 sm:gap-6 shrink-0">
-                  <a href="tel:2164088962" className="inline-flex items-center gap-1.5 hover:text-blue-200 transition-colors">
-                    <Phone className="w-3 h-3 text-cyan-300" />
-                    <span>(216) 408-8962</span>
-                  </a>
-                  <a href="mailto:contact@clicklabmarketing.com" className="hidden sm:inline-block hover:text-blue-200 transition-colors">
-                    contact@clicklabmarketing.com
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Main Navbar */}
-        <div
-          className={`transition-all duration-300 ${
-            isScrolled
-              ? "bg-[#080f1e]/95 backdrop-blur-md shadow-xl py-3.5 border-b border-slate-800/80"
-              : "bg-[#080f1e]/90 backdrop-blur-sm py-4 border-b border-white/[0.06]"
-          }`}
-        >
-          <div className="container mx-auto px-4 md:px-8">
-            <div className="flex items-center justify-between">
-              
-              {/* Logo */}
-              <div className="flex-1 flex justify-start">
-                <Link href="/" className="flex items-center gap-3 group">
-                  <Image
-                    src="/logos/clicklab-logo-white.svg"
-                    alt="ClickLab Marketing"
-                    width={180}
-                    height={40}
-                    priority
-                    className="h-9 sm:h-10 w-auto"
-                  />
-                </Link>
-              </div>
-
-              {/* Centered Navigation Links */}
-              <div className="hidden lg:flex items-center justify-center gap-6 xl:gap-8">
-                <Link
-                  href="/about"
-                  className="text-xs xl:text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors uppercase tracking-widest relative group"
-                >
-                  About Us
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-                </Link>
-
-                {/* Services Dropdown */}
-                <div
-                  className="relative group"
-                  onMouseEnter={() => setServicesDropdownOpen(true)}
-                  onMouseLeave={() => setServicesDropdownOpen(false)}
-                >
-                  <button className="text-xs xl:text-sm font-bold flex items-center gap-1 text-slate-300 hover:text-cyan-400 transition-colors uppercase tracking-widest relative cursor-pointer">
-                    Services
-                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${servicesDropdownOpen ? "rotate-180 text-cyan-400" : ""}`} />
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-                  </button>
-
-                  <AnimatePresence>
-                    {servicesDropdownOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.96 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                        transition={{ duration: 0.15 }}
-                        className="absolute left-1/2 -translate-x-1/2 mt-3 w-[560px] bg-[#0c162e] rounded-2xl shadow-2xl border border-slate-700/80 overflow-hidden"
-                      >
-                        <div className="p-3 grid grid-cols-2 gap-2 bg-[#0c162e]">
-                          {servicesMenu.map((service) => (
-                            <Link
-                              key={service.name}
-                              href={service.href}
-                              className="group/item flex flex-col p-3 hover:bg-white/[0.05] rounded-xl transition-all"
-                            >
-                              <h4 className="text-xs sm:text-sm font-bold text-white group-hover/item:text-cyan-400 transition-colors mb-0.5">
-                                {service.name}
-                              </h4>
-                              <p className="text-[11px] text-slate-400 font-normal leading-relaxed">
-                                {service.description}
-                              </p>
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                <Link
-                  href="/portfolio"
-                  className="text-xs xl:text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors uppercase tracking-widest relative group"
-                >
-                  Portfolio
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-                </Link>
-
-                <Link
-                  href="/contact"
-                  className="text-xs xl:text-sm font-bold text-slate-300 hover:text-cyan-400 transition-colors uppercase tracking-widest relative group"
-                >
-                  Contact Us
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-                </Link>
-              </div>
-
-              {/* Right CTA Button */}
-              <div className="hidden lg:flex items-center justify-end gap-5 flex-1">
-                <button
-                  onClick={onOpenAudit}
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-lg shadow-blue-600/25 active:scale-98 transition-all cursor-pointer"
-                >
-                  <span>Get a Free Audit</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-
-              {/* Mobile Menu Toggle */}
-              <button
-                className="lg:hidden p-2 text-slate-300 hover:text-white transition-colors flex-none"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile Dropdown Menu */}
+    <div className="fixed top-0 left-0 right-0 z-50">
+      {/* Top Announcement Bar - Collapses smoothly on scroll */}
       <AnimatePresence>
-        {mobileMenuOpen && (
+        {!isScrolled && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="fixed top-[70px] left-0 w-full bg-[#080f1e] border-b border-slate-800 shadow-2xl z-40 lg:hidden overflow-y-auto max-h-[calc(100vh-70px)]"
+            initial={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 text-white text-[11px] sm:text-xs font-bold"
           >
-            <div className="container mx-auto px-4 py-6 flex flex-col gap-3">
-              <Link
-                href="/about"
-                className="text-base font-bold text-slate-200 px-4 py-3 bg-white/[0.04] rounded-xl hover:text-cyan-400 transition-colors uppercase tracking-wider"
-              >
-                About Us
-              </Link>
-              <Link
-                href="/portfolio"
-                className="text-base font-bold text-slate-200 px-4 py-3 bg-white/[0.04] rounded-xl hover:text-cyan-400 transition-colors uppercase tracking-wider"
-              >
-                Portfolio
-              </Link>
-              <Link
-                href="/contact"
-                className="text-base font-bold text-slate-200 px-4 py-3 bg-white/[0.04] rounded-xl hover:text-cyan-400 transition-colors uppercase tracking-wider"
-              >
-                Contact Us
-              </Link>
-              
-              <div className="pt-3 border-t border-slate-800">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenAudit();
-                  }}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold py-3.5 px-4 rounded-xl text-sm uppercase tracking-wider shadow-lg cursor-pointer"
+            <div className="max-w-7xl mx-auto px-4 py-1.5 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2 truncate">
+                <span className="bg-white/20 text-white px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider shrink-0">
+                  Growth Partner
+                </span>
+                <span className="text-white/95 truncate">
+                  Scale your revenue with high-ROAS Google &amp; Meta Ads.
+                </span>
+              </div>
+
+              <div className="flex items-center gap-4 shrink-0">
+                <a
+                  href="tel:2164088962"
+                  className="hover:text-cyan-200 transition-colors flex items-center gap-1.5"
                 >
-                  <span>Get a Free Growth Audit</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+                  <Phone className="w-3 h-3 text-cyan-300" />
+                  <span className="hidden sm:inline">Direct Line:</span>
+                  <strong className="text-white font-extrabold">(216) 408-8962</strong>
+                </a>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+
+      {/* Main Sticky Header - Clean LP style */}
+      <header
+        className={`transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-200"
+            : "bg-white/90 backdrop-blur-sm py-3.5 border-b border-slate-200/80"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* ClickLab Logo */}
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="relative w-36 sm:w-44 h-10 flex items-center">
+                <Image
+                  src="/logos/clicklab-logo.png"
+                  alt="ClickLab Marketing"
+                  width={180}
+                  height={42}
+                  priority
+                  className="h-9 sm:h-10 w-auto object-contain"
+                />
+              </div>
+            </Link>
+
+            {/* Middle Trust Badge */}
+            <div className="hidden lg:flex items-center gap-2 bg-blue-50 border border-blue-200/80 rounded-full px-4 py-1 text-xs font-bold text-blue-700 shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+              <span>Performance Marketing Agency</span>
+            </div>
+
+            {/* Mobile Call Button */}
+            <div className="flex sm:hidden items-center">
+              <a
+                href="tel:2164088962"
+                className="flex items-center gap-1.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-black text-xs px-3.5 py-2 rounded-full shadow-md shadow-blue-600/25 active:scale-95 transition-all shrink-0"
+              >
+                <div className="bg-white/20 p-1 rounded-full shrink-0">
+                  <Phone className="w-3 h-3 fill-current text-white" />
+                </div>
+                <span className="font-bold tracking-tight text-white">(216) 408-8962</span>
+              </a>
+            </div>
+
+            {/* Desktop Action Buttons */}
+            <div className="hidden sm:flex items-center gap-4">
+              <a
+                href="tel:2164088962"
+                className="flex items-center gap-2 text-slate-700 hover:text-blue-600 font-extrabold text-sm transition-colors group px-3 py-1.5 rounded-xl hover:bg-slate-100"
+              >
+                <div className="w-8 h-8 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-xs">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <span className="tracking-tight">(216) 408-8962</span>
+              </a>
+
+              <button
+                onClick={onOpenAudit}
+                className="btn-shimmer flex items-center gap-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-black text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-lg shadow-blue-600/25 hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer"
+              >
+                <Calendar className="w-4 h-4" />
+                <span>Claim Free Audit</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
   );
 }
