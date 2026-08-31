@@ -71,7 +71,7 @@ export function Navbar({ onOpenAudit }: NavbarProps) {
             <Link href="/" className="flex items-center gap-2 group">
               <div className="relative w-36 sm:w-44 h-10 flex items-center">
                 <Image
-                  src="/logos/clicklab-logo.png"
+                  src="/logos/clicklab-logo.svg"
                   alt="ClickLab Marketing"
                   width={180}
                   height={42}

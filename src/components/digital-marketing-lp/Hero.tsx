@@ -8,6 +8,29 @@ interface HeroProps {
 }
 
 export function Hero({ onOpenAudit }: HeroProps) {
+  const heroStats = [
+    {
+      value: "14+",
+      label: "Years Experience",
+      gradient: "from-blue-600 to-indigo-600",
+    },
+    {
+      value: "4.8x",
+      label: "Average ROAS",
+      gradient: "from-cyan-500 to-blue-600",
+    },
+    {
+      value: "$50M+",
+      label: "Ad Spend Scaled",
+      gradient: "from-indigo-600 to-purple-600",
+    },
+    {
+      value: "98%",
+      label: "Client Retention",
+      gradient: "from-emerald-500 to-teal-600",
+    },
+  ];
+
   return (
     <section className="relative min-h-[88vh] lg:min-h-[90vh] flex flex-col justify-center items-center overflow-hidden bg-gradient-to-b from-blue-50/70 via-white to-slate-50/50 pt-28 pb-16 lg:pt-36 lg:pb-24 px-4 sm:px-6 lg:px-8">
       
@@ -62,7 +85,7 @@ export function Hero({ onOpenAudit }: HeroProps) {
             </p>
 
             {/* Primary Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-2">
               <button
                 onClick={onOpenAudit}
                 className="btn-shimmer inline-flex items-center justify-center gap-2.5 h-14 px-8 sm:px-9 text-base rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold shadow-xl shadow-blue-600/25 active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap"
@@ -80,20 +103,23 @@ export function Hero({ onOpenAudit }: HeroProps) {
               </a>
             </div>
 
-            {/* Mobile Quick Proof Strip */}
-            <div className="lg:hidden mt-8 pt-6 border-t border-slate-200 w-full grid grid-cols-3 gap-2 text-center">
-              <div className="bg-white border border-slate-200/90 rounded-2xl py-2.5 px-1 shadow-xs">
-                <span className="text-blue-600 font-black text-base block">4.36x</span>
-                <span className="text-[10px] text-slate-500 uppercase font-extrabold">Avg ROAS</span>
-              </div>
-              <div className="bg-white border border-slate-200/90 rounded-2xl py-2.5 px-1 shadow-xs">
-                <span className="text-slate-900 font-black text-base block">$180k+</span>
-                <span className="text-[10px] text-slate-500 uppercase font-extrabold">Spend Scale</span>
-              </div>
-              <div className="bg-white border border-slate-200/90 rounded-2xl py-2.5 px-1 shadow-xs">
-                <span className="text-emerald-600 font-black text-base block">+46%</span>
-                <span className="text-[10px] text-slate-500 uppercase font-extrabold">Conv Lift</span>
-              </div>
+            {/* 4 Performance Stat Cards */}
+            <div className="mt-8 pt-6 border-t border-slate-200/80 w-full grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
+              {heroStats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="bg-white border border-slate-200/90 rounded-2xl py-3 px-2.5 sm:px-3 shadow-xs hover:shadow-md hover:border-blue-300 transition-all text-center group"
+                >
+                  <span
+                    className={`text-xl sm:text-2xl font-black block tracking-tight text-transparent bg-clip-text bg-gradient-to-r ${stat.gradient}`}
+                  >
+                    {stat.value}
+                  </span>
+                  <span className="text-[10px] sm:text-[11px] text-slate-500 uppercase font-extrabold block mt-0.5 tracking-wider">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
             </div>
 
           </div>
