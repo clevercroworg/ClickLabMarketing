@@ -4,6 +4,10 @@ import { ThankYouContent } from "@/components/rehab-lp/ThankYouContent";
 export const metadata: Metadata = {
   title: "Thank You | Strategy Call Requested | ClickLab Marketing",
   description: "Your strategy call request has been received. Our senior rehab growth strategist will contact your admissions line shortly.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function ServicesRehabThankYouPage() {

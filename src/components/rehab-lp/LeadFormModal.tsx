@@ -49,7 +49,7 @@ export function LeadFormModal({ isOpen, onClose, redirectUrl = "/rehab-digital-m
       setIsSubmitting(false);
       setSubmitted(true);
       setTimeout(() => {
-        router.push(redirectUrl);
+        window.location.href = redirectUrl;
       }, 600);
     }
   };

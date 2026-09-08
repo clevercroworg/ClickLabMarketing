@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const alt = 'Click Lab Marketing | Premium Digital Agency';
 export const size = {
   width: 1200,
